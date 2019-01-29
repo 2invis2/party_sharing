@@ -5,7 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FeedActivity">
+    tools:context=".features.feed.presentation.FeedActivity">
 
     <TextView
         android:id="@+id/message"
