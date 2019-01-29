@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.cft.shift.partysharing.partysharing.R;
 
-public class FeedActivity extends BaseActivity {
+public class FeedActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
 
@@ -41,8 +41,8 @@ public class FeedActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        mTextMessage = findViewById(R.id.message);
+        BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 

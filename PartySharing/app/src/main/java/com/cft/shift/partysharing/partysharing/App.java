@@ -3,7 +3,7 @@ package com.cft.shift.partysharing.partysharing;
 import android.app.Application;
 import android.content.Context;
 
-import ru.ftc.android.shifttemple.network.RetrofitProvider;
+import com.cft.shift.partysharing.partysharing.network.RetrofitProvider;
 
 /**
  * Created: samokryl
