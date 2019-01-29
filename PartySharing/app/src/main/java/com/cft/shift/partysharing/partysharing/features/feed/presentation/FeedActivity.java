@@ -8,6 +8,9 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.cft.shift.partysharing.partysharing.R;
+import com.cft.shift.partysharing.partysharing.features.BaseActivity;
+import com.cft.shift.partysharing.partysharing.features.MvpPresenter;
+import com.cft.shift.partysharing.partysharing.features.MvpView;
 
 public class FeedActivity extends BaseActivity {
 
@@ -37,12 +40,22 @@ public class FeedActivity extends BaseActivity {
     };
 
     @Override
+    protected <T extends MvpView> MvpPresenter<T> getPresenter() {
+        return null;
+    }
+
+    @Override
+    protected <T extends MvpView> T getMvpView() {
+        return null;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        mTextMessage = findViewById(R.id.message);
+        BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
