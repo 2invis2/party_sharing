@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">PartySharing</string>
+    <string name="title_feed">Feed</string>
+    <string name="title_search">Search</string>
+    <string name="title_create">Create</string>
+    <string name="title_profile">Profile</string>
+</resources>
