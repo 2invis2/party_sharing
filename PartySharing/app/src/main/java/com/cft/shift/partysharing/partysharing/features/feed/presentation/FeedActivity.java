@@ -8,6 +8,9 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.cft.shift.partysharing.partysharing.R;
+import com.cft.shift.partysharing.partysharing.features.BaseActivity;
+import com.cft.shift.partysharing.partysharing.features.MvpPresenter;
+import com.cft.shift.partysharing.partysharing.features.MvpView;
 
 public class FeedActivity extends BaseActivity {
 
@@ -35,6 +38,16 @@ public class FeedActivity extends BaseActivity {
             return false;
         }
     };
+
+    @Override
+    protected <T extends MvpView> MvpPresenter<T> getPresenter() {
+        return null;
+    }
+
+    @Override
+    protected <T extends MvpView> T getMvpView() {
+        return null;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
