@@ -8,4 +8,6 @@
     <string name="title_event_attend">Attend</string>
     <string name="title_event_manage">Manage</string>
     <string name="title_events">Events</string>
+    <string name="tab_feed">Feed</string>
+    <string name="tab_pending">Pending</string>
 </resources>
