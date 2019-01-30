@@ -12,7 +12,7 @@ import com.cft.shift.partysharing.partysharing.features.BaseActivity;
 import com.cft.shift.partysharing.partysharing.features.MvpPresenter;
 import com.cft.shift.partysharing.partysharing.features.MvpView;
 
-public class FeedActivity extends BaseActivity {
+public class FeedActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
 
