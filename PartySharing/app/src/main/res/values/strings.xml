@@ -4,4 +4,8 @@
     <string name="title_search">Search</string>
     <string name="title_create">Create</string>
     <string name="title_profile">Profile</string>
+    <string name="title_interests">Interests</string>
+    <string name="title_event_attend">Attend</string>
+    <string name="title_event_manage">Manage</string>
+    <string name="title_events">Events</string>
 </resources>
