@@ -8,4 +8,6 @@
     <string name="title_event_attend">Attend</string>
     <string name="title_event_manage">Manage</string>
     <string name="title_events">Events</string>
+    <string name="title_profile_location">location</string>
+    <string name="title_profile_age">age</string>
 </resources>

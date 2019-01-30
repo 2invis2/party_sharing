@@ -3,13 +3,11 @@ package com.cft.shift.partysharing.partysharing.features.feed.presentation;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.cft.shift.partysharing.partysharing.R;
-import com.cft.shift.partysharing.partysharing.features.BaseActivity;
-import com.cft.shift.partysharing.partysharing.features.MvpPresenter;
-import com.cft.shift.partysharing.partysharing.features.MvpView;
 
 public class FeedActivity extends AppCompatActivity {
 
@@ -32,21 +30,12 @@ public class FeedActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_profile:
                     mTextMessage.setText(R.string.title_profile);
+
                     return true;
             }
             return false;
         }
     };
-
-    @Override
-    protected <T extends MvpView> MvpPresenter<T> getPresenter() {
-        return null;
-    }
-
-    @Override
-    protected <T extends MvpView> T getMvpView() {
-        return null;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

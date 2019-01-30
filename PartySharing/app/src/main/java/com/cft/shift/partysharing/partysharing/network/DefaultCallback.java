@@ -10,10 +10,6 @@ import com.cft.shift.partysharing.partysharing.exception.EmptyBodyException;
  * Date: 01.07.18
  * Time: 23:55
  */
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 
 public final class DefaultCallback<T> implements Callback<T> {
 

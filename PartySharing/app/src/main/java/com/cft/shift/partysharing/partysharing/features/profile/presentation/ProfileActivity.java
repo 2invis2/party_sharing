@@ -1,4 +1,4 @@
-package com.cft.shift.partysharing.partysharing.features.profile;
+package com.cft.shift.partysharing.partysharing.features.profile.presentation;
 
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
@@ -9,7 +9,7 @@ import com.cft.shift.partysharing.partysharing.features.BaseActivity;
 import com.cft.shift.partysharing.partysharing.features.MvpPresenter;
 import com.cft.shift.partysharing.partysharing.features.MvpView;
 
-public class ProfileActivity extends BaseActivity {
+public class ProfileActivity extends BaseActivity{
     @Override
     protected <T extends MvpView> MvpPresenter<T> getPresenter() {
         return null;
@@ -23,7 +23,7 @@ public class ProfileActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.fragment_profile);
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
         View view = bottomNavigationView.findViewById(R.id.navigation_profile);
         view.performClick();
