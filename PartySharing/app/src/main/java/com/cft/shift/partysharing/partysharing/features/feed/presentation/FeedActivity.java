@@ -14,6 +14,8 @@ import com.cft.shift.partysharing.partysharing.features.BaseActivity;
 import com.cft.shift.partysharing.partysharing.features.MvpPresenter;
 import com.cft.shift.partysharing.partysharing.features.MvpView;
 import com.cft.shift.partysharing.partysharing.features.feed.domain.model.Event;
+import com.cft.shift.partysharing.partysharing.features.profile.presentation.CreateActivityPresenter;
+import com.cft.shift.partysharing.partysharing.features.profile.presentation.CreateEventActivity;
 import com.cft.shift.partysharing.partysharing.features.profile.presentation.ProfileActivity;
 
 import java.util.List;
@@ -33,6 +35,8 @@ public class FeedActivity extends BaseActivity implements FeedView {
                 case R.id.navigation_search:
                     return true;
                 case R.id.navigation_create:
+                    Intent intent2 = new Intent(FeedActivity.this, CreateEventActivity.class);
+                    startActivity(intent2);
                     return true;
                 case R.id.navigation_profile:
                     Intent intent = new Intent(FeedActivity.this, ProfileActivity.class);

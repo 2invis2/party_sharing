@@ -40,8 +40,8 @@ public class ProfileActivity extends BaseActivity implements ProfileView{
                     //startActivity(intent1);
                     return true;
                 case R.id.navigation_create:
-                    //Intent intent2 = new Intent(ProfileActivity.this, CreateActivity.class);
-                    //startActivity(intent2);
+                    Intent intent2 = new Intent(ProfileActivity.this, CreateEventActivity.class);
+                    startActivity(intent2);
                     return true;
                 case R.id.navigation_profile:
                     return true;
