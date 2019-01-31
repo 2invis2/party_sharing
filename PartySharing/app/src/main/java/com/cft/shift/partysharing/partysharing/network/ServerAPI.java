@@ -36,43 +36,33 @@ public interface ServerAPI {
     @POST("/register")
     Call<RegisterResponse> postRegistrationInfo(RegisterRequest registerRequest);
 
-    @Headers({"Authorization: id"})
     @GET("/feed")
     Call<FeedResponse> getFeed();
 
-    @Headers({"Authorization: id"})
     @GET("/profile")
     Call<GetProfileResponse> getProfile(GetProfileRequest getProfileRequest);
 
-    @Headers({"Authorization: id"})
     @GET("/profiles")
     Call<GetProfilesResponse> getProfiles(GetProfilesRequest getProfilesRequest);
 
-    @Headers({"Authorization: id"})
     @GET("/event")
     Call<AddEventResponse> getEvent(@Body AddEventRequest addEventRequest);
 
-    @Headers({"Authorization: id"})
     @GET("/event")
     Call<GetEventResponse> getEvent(@Body GetEventRequest getEventRequest);
 
-    @Headers({"Authorization: id"})
     @GET("/events")
     Call<GetAllEventsResponse> getEventList();
 
-    @Headers({"Authorization: id"})
     @POST("/request")
     Call<Response> postEventRequest(@Body PartRequest partRequest);
 
-    @Headers({"Authorization: id"})
     @POST("/invite")
     Call<Response> postInviteRequest(@Body InviteRequest inviteRequest);
 
-    @Headers({"Authorization: id"})
     @POST("/accept")
     Call<Response> postAcceptRequest(@Body AcceptRequest acceptRequest);
 
-    @Headers({"Authorization: id"})
     @POST("/confirm")
     Call<Response> postConfirmRequest(@Body ConfirmRequest confirmRequest);
 

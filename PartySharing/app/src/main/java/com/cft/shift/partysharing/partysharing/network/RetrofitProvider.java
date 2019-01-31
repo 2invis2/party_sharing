@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public final class RetrofitProvider {
 
-    private static final String BASE_URL = "http://192.168.43.53:8080/api/v001/";
+    private static final String BASE_URL = "http://10.9.46.188:8080";
 
     private final Retrofit retrofit;
 
@@ -32,6 +32,7 @@ public final class RetrofitProvider {
         logInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         builder.addInterceptor(logInterceptor);
+        builder.addInterceptor(new SessionInterceptor());
 
         return builder.build();
 

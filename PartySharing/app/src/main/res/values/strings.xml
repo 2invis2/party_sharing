@@ -26,4 +26,8 @@
     <string name="tab_feed">Feed</string>
     <string name="tab_pending">Pending</string>
 
+    <string name="tab_feed">Feed</string>
+    <string name="tab_pending">Pending</string>
+    <string name="title_profile_location">Location</string>
+    <string name="title_profile_age">Age</string>
 </resources>
