@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".features.event.presentation.EventActivity"
+            android:name=".features.feed.presentation.FeedActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,6 +24,10 @@
         </activity>
         <activity
             android:name=".features.profile.presentation.ProfileActivity"
+            android:label="@string/app_name">
+        </activity>
+        <activity
+            android:name=".features.event.presentation.EventActivity"
             android:label="@string/app_name">
         </activity>
     </application>
