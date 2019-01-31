@@ -8,13 +8,21 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.cft.shift.partysharing.partysharing.R;
+<<<<<<< HEAD
+=======
 import com.cft.shift.partysharing.partysharing.features.BaseActivity;
 import com.cft.shift.partysharing.partysharing.features.MvpPresenter;
 import com.cft.shift.partysharing.partysharing.features.MvpView;
+import com.cft.shift.partysharing.partysharing.features.feed.domain.model.Event;
+>>>>>>> master
 
-public class FeedActivity extends AppCompatActivity {
+import java.util.List;
+
+public class FeedActivity extends BaseActivity implements FeedView {
 
     private TextView mTextMessage;
+
+    private FeedPresenter presenter;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -33,6 +41,7 @@ public class FeedActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_profile:
                     mTextMessage.setText(R.string.title_profile);
+
                     return true;
             }
             return false;
@@ -43,9 +52,33 @@ public class FeedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
 
+        initView();
+    }
+
+    private void initView(){
         mTextMessage = findViewById(R.id.message);
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
+    @Override
+    protected MvpPresenter<FeedView> getPresenter() {
+        presenter = new FeedPresenter();
+        return presenter;
+    }
+
+    @Override
+    protected  MvpView getMvpView() {
+        return this;
+    }
+
+    @Override
+    public void showEventList(List<Event> list) {
+
+    }
+
+    @Override
+    public void showError(String message) {
+
+    }
 }
