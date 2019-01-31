@@ -8,8 +8,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.cft.shift.partysharing.partysharing.R;
@@ -23,8 +21,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ProfileActivity extends BaseActivity implements ProfileView{
     private ProfilePresenter presenter;
 
-    private TextView mTextMessage;
-
     private CircleImageView image;
     private TextView profileName;
     private TextView profileLocation;
@@ -36,23 +32,18 @@ public class ProfileActivity extends BaseActivity implements ProfileView{
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch(item.getItemId()) {
                 case R.id.navigation_feed:
-                    mTextMessage.setText(R.string.title_feed);
-                    ProfileActivity.super.onStop();
                     Intent intent0 = new Intent(ProfileActivity.this, FeedActivity.class);
                     startActivity(intent0);
                     return true;
                 case R.id.navigation_search:
-                    mTextMessage.setText(R.string.title_search);
                     //Intent intent1 = new Intent(ProfileActivity.this, SearchActivity.class);
                     //startActivity(intent1);
                     return true;
                 case R.id.navigation_create:
-                    mTextMessage.setText(R.string.title_create);
                     //Intent intent2 = new Intent(ProfileActivity.this, CreateActivity.class);
                     //startActivity(intent2);
                     return true;
                 case R.id.navigation_profile:
-                    mTextMessage.setText(R.string.title_profile);
                     return true;
             }
             return false;
@@ -68,7 +59,6 @@ public class ProfileActivity extends BaseActivity implements ProfileView{
     }
 
     private void initView() {
-        mTextMessage = findViewById(R.id.message);
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
         image = findViewById(R.id.circle_profile);
@@ -93,7 +83,7 @@ public class ProfileActivity extends BaseActivity implements ProfileView{
 
     }
 
-    private void fragmentReplace(Fragment fragment) {
+    public void fragmentReplace(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.profile_fragment_replace, fragment)

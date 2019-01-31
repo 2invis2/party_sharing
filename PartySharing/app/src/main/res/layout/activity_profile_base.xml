@@ -22,10 +22,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
+        android:layout_marginBottom="78dp"
         android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/profile_fragment_replace"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="0dp">
+        tools:ignore="MissingConstraints">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/circle_profile"

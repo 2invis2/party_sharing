@@ -27,29 +27,31 @@ public class ProfileFragment extends Fragment{
         profileEventsAttend = view.findViewById(R.id.profile_events_attend_button);
         profileEventsManage = view.findViewById(R.id.profile_events_manage_button);
 
+
         interests.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            //    fragmentReplace(new ProfileInterestsFragment());
+            ((ProfileActivity)requireActivity()).fragmentReplace(new ProfileInterestsFragment());
             }
         });
 
         profileEventsAttend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // fragmentReplace(new ProfileEventsAttendFragment());
+            ((ProfileActivity)requireActivity()).fragmentReplace(new ProfileEventsAttendFragment());
+
+                // fragmentReplace(new ProfileEventsAttendFragment());
             }
         });
 
         profileEventsManage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ((ProfileActivity)requireActivity()).fragmentReplace(new ProfileEventsManageFragment());
               //  fragmentReplace(new ProfileEventsManageFragment());
             }
         });
 
         return view;
-
     }
-
 }
