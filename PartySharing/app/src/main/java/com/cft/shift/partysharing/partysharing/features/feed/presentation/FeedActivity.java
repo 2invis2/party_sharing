@@ -8,14 +8,10 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.cft.shift.partysharing.partysharing.R;
-<<<<<<< HEAD
-=======
 import com.cft.shift.partysharing.partysharing.features.BaseActivity;
 import com.cft.shift.partysharing.partysharing.features.MvpPresenter;
 import com.cft.shift.partysharing.partysharing.features.MvpView;
 import com.cft.shift.partysharing.partysharing.features.feed.domain.model.Event;
->>>>>>> master
-
 import java.util.List;
 
 public class FeedActivity extends BaseActivity implements FeedView {

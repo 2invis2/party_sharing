@@ -19,4 +19,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tab_feed">Feed</string>
+    <string name="tab_pending">Pending</string>
+    <string name="title_profile_location">Location</string>
+    <string name="title_profile_age">Age</string>
 </resources>
