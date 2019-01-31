@@ -15,6 +15,10 @@ import com.cft.shift.partysharing.partysharing.features.BaseActivity;
 import com.cft.shift.partysharing.partysharing.features.MvpPresenter;
 import com.cft.shift.partysharing.partysharing.features.MvpView;
 import com.cft.shift.partysharing.partysharing.features.feed.presentation.FeedActivity;
+import com.cft.shift.partysharing.partysharing.features.profile.domain.model.Profile;
+import com.cft.shift.partysharing.partysharing.network.exchange.EventPreview;
+
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -66,16 +70,14 @@ public class ProfileActivity extends BaseActivity implements ProfileView{
         profileLocation = findViewById(R.id.title_profile_location);
         profileAge = findViewById(R.id.title_profile_age);
     }
-
     @Override
-    protected MvpPresenter<ProfileView> getPresenter() {
-        presenter = new ProfilePresenter();
-        return presenter;
+    public void showEventsPreviw(int eventsNum, List<EventPreview> eventPreviews) {
+
     }
 
     @Override
-    protected MvpView getMvpView() {
-        return this;
+    public void showProfile(Profile profile) {
+
     }
 
     @Override
@@ -88,5 +90,20 @@ public class ProfileActivity extends BaseActivity implements ProfileView{
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.profile_fragment_replace, fragment)
                 .commit();
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
+    @Override
+    protected MvpPresenter<ProfileView> getPresenter() {
+        presenter = PresenterProfileFactory.createProfilePresenter(this);
+        return presenter;
+    }
+
+    @Override
+    protected MvpView getMvpView() {
+        return this;
     }
 }
