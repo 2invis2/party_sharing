@@ -1,5 +1,7 @@
 package com.cft.shift.partysharing.partysharing.network;
 
+import com.cft.shift.partysharing.partysharing.features.profile.domain.model.Profile;
+
 /**
  * Created: samokryl
  * Date: 01.07.18
@@ -8,7 +10,7 @@ package com.cft.shift.partysharing.partysharing.network;
 
 public interface Carry<T> {
 
-    void onSuccess(T result);
+    Profile onSuccess(T result);
 
     void onFailure(Throwable throwable);
 

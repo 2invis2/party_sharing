@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.cft.shift.partysharing.partysharing.App;
 import com.cft.shift.partysharing.partysharing.R;
+import com.cft.shift.partysharing.partysharing.features.profile.domain.model.Profile;
 import com.cft.shift.partysharing.partysharing.network.Carry;
 import com.cft.shift.partysharing.partysharing.network.DefaultCallback;
 import com.cft.shift.partysharing.partysharing.network.ServerAPI;
@@ -53,13 +54,14 @@ public class EventActivity extends AppCompatActivity {
                     .create(ServerAPI.class);
             api.getFeed().enqueue(new DefaultCallback<FeedResponse>(new Carry<FeedResponse>(){
                 @Override
-                public void onSuccess(FeedResponse result) {
+                public Profile onSuccess(FeedResponse result) {
                     fragment = new MembersFragment();
 
                     FragmentManager fm = getSupportFragmentManager();
                     FragmentTransaction ft = fm.beginTransaction();
                     ft.replace(R.id.event_frame ,fragment);
                     ft.commit();
+                    return null;
                 }
                 @Override
                 public void onFailure(Throwable throwable) {

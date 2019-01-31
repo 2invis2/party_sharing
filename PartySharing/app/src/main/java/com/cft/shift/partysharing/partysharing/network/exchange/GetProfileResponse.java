@@ -29,10 +29,16 @@ public class GetProfileResponse implements Serializable {
      * мероприятия, в которых участвует
      */
     private List<Long> attend;
+
+    private List<Long> manage;
     /**
      * картинка в base64
      */
     private String image;
+
+    public List<Long> getManage() {
+        return manage;
+    }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
