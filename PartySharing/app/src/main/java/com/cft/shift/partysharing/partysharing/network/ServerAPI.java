@@ -17,6 +17,7 @@ import com.cft.shift.partysharing.partysharing.features.event.domain.model.Event
 import com.cft.shift.partysharing.partysharing.network.exchange.AcceptRequest;
 import com.cft.shift.partysharing.partysharing.network.exchange.AddEventRequest;
 import com.cft.shift.partysharing.partysharing.network.exchange.AddEventResponse;
+import com.cft.shift.partysharing.partysharing.network.exchange.ConfirmRequest;
 import com.cft.shift.partysharing.partysharing.network.exchange.FeedResponse;
 import com.cft.shift.partysharing.partysharing.network.exchange.GetAllEventsResponse;
 import com.cft.shift.partysharing.partysharing.network.exchange.GetEventRequest;
@@ -71,7 +72,9 @@ public interface ServerAPI {
     @POST("/accept")
     Call<Response> postAcceptRequest(@Body AcceptRequest acceptRequest);
 
-
+    @Headers({"Authorization: id"})
+    @POST("/confirm")
+    Call<Response> postConfirmRequest(@Body ConfirmRequest confirmRequest);
 
 
 }
