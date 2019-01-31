@@ -42,7 +42,6 @@ public class FeedActivity extends BaseActivity implements FeedView {
             return false;
         }
     };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
