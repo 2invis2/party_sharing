@@ -3,6 +3,7 @@ package com.cft.shift.partysharing.partysharing.features.feed.presentation;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -37,17 +38,6 @@ public class FeedActivity extends AppCompatActivity {
             return false;
         }
     };
-
-    @Override
-    protected <T extends MvpView> MvpPresenter<T> getPresenter() {
-        return null;
-    }
-
-    @Override
-    protected <T extends MvpView> T getMvpView() {
-        return null;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
