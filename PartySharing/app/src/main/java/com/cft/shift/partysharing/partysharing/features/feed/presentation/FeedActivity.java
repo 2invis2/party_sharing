@@ -1,22 +1,24 @@
 package com.cft.shift.partysharing.partysharing.features.feed.presentation;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.cft.shift.partysharing.partysharing.R;
+
+
 import com.cft.shift.partysharing.partysharing.features.BaseActivity;
 import com.cft.shift.partysharing.partysharing.features.MvpPresenter;
 import com.cft.shift.partysharing.partysharing.features.MvpView;
 import com.cft.shift.partysharing.partysharing.features.feed.domain.model.Event;
+import com.cft.shift.partysharing.partysharing.features.profile.presentation.ProfileActivity;
+
 import java.util.List;
 
 public class FeedActivity extends BaseActivity implements FeedView {
-
-    private TextView mTextMessage;
 
     private FeedPresenter presenter;
 
@@ -27,17 +29,14 @@ public class FeedActivity extends BaseActivity implements FeedView {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_feed:
-                    mTextMessage.setText(R.string.title_feed);
                     return true;
                 case R.id.navigation_search:
-                    mTextMessage.setText(R.string.title_search);
                     return true;
                 case R.id.navigation_create:
-                    mTextMessage.setText(R.string.title_create);
                     return true;
                 case R.id.navigation_profile:
-                    mTextMessage.setText(R.string.title_profile);
-
+                    Intent intent = new Intent(FeedActivity.this, ProfileActivity.class);
+                    startActivity(intent);
                     return true;
             }
             return false;
@@ -52,7 +51,6 @@ public class FeedActivity extends BaseActivity implements FeedView {
     }
 
     private void initView(){
-        mTextMessage = findViewById(R.id.message);
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }

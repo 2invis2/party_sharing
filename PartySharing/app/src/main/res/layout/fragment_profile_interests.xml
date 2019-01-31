@@ -1,74 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".features.feed.presentation.FeedActivity">
-
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/navigation"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="?android:attr/windowBackground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintLeft_toRightOf="parent"
-        app:menu="@menu/navigation" />
-
-    <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="0dp">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/circle_profile"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="10dp"
-            app:civ_border_color="#FFFFFF"
-            app:civ_border_width="2dp"
-            tools:ignore="MissingConstraints"
-
-            tools:layout_editor_absoluteX="9dp"
-            tools:layout_editor_absoluteY="9dp"
-            tools:src="@tools:sample/avatars" />
-
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="410dp"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintGuide_begin="100dp" />
-
-        <TextView
-            android:id="@+id/title_profile_name"
-            android:layout_width="275dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="39dp"
-            android:layout_marginBottom="34dp"
-            android:text="@string/title_profile"
-            android:textSize="22sp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints,RtlHardcoded" />
-    </FrameLayout>
-
-    <LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/linearLayout"
         android:layout_width="fill_parent"
         android:layout_height="406dp"
@@ -79,10 +11,11 @@
         app:layout_constraintTop_toBottomOf="@+id/frameLayout"
         app:layout_constraintVertical_bias="0.649"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp">
+        tools:layout_editor_absoluteX="0dp"
+        tools:context="com.cft.shift.partysharing.partysharing.features.profile.presentation.ProfileInterestsFragment">
 
         <TextView
-            android:id="@+id/rb_option_"
+            android:id="@+id/profile_interests"
             android:layout_width="match_parent"
             android:layout_height="66dp"
             android:gravity="center"
@@ -102,5 +35,4 @@
             android:paddingStart="2dp" />
 
 
-    </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

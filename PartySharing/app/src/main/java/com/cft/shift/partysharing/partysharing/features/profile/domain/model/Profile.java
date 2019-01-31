@@ -3,8 +3,10 @@ package com.cft.shift.partysharing.partysharing.features.profile.domain.model;
 import android.graphics.Bitmap;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Profile {
+    private UUID id;
     private String firstName;
     private String lastName;
     private int age;
