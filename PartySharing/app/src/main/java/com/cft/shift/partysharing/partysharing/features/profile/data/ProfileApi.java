@@ -14,5 +14,5 @@ import retrofit2.http.Path;
 
 public interface ProfileApi {
     @GET("/profile")
-    Call<Profile> getProfile(@Header("id") UUID id);
+    Call<Profile> getProfile(@Header("id") Long id);
 }

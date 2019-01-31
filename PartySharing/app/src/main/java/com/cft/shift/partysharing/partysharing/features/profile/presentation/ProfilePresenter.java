@@ -15,7 +15,7 @@ public class ProfilePresenter extends MvpPresenter<ProfileView> {
         this.profileApi = profileApi;
     }
 
-    public void getProfile(UUID id, Carry<Profile> carry) {
+    public void getProfile(Long id, Carry<Profile> carry) {
         profileApi.getProfile(id).enqueue(new DefaultCallback<>(carry));
     }
 

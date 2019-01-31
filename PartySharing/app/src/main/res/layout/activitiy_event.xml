@@ -17,7 +17,7 @@
         app:layout_constraintLeft_toRightOf="parent"
         app:menu="@menu/navigation" />
     <fragment
-        android:name="com.cft.shift.partysharing.partysharing.EventFragment"
+        android:name="com.cft.shift.partysharing.partysharing.features.event.presentation.EventFragment"
         android:id="@+id/event_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

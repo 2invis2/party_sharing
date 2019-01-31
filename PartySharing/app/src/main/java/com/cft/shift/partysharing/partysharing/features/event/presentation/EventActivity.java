@@ -1,7 +1,6 @@
 package com.cft.shift.partysharing.partysharing.features.event.presentation;
 
 import android.os.Bundle;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -12,12 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cft.shift.partysharing.partysharing.App;
-import com.cft.shift.partysharing.partysharing.MembersFragment;
 import com.cft.shift.partysharing.partysharing.R;
-import com.cft.shift.partysharing.partysharing.features.BaseActivity;
-import com.cft.shift.partysharing.partysharing.features.MvpPresenter;
-import com.cft.shift.partysharing.partysharing.features.MvpView;
-import com.cft.shift.partysharing.partysharing.features.event.domain.model.Event;
 import com.cft.shift.partysharing.partysharing.network.Carry;
 import com.cft.shift.partysharing.partysharing.network.DefaultCallback;
 import com.cft.shift.partysharing.partysharing.network.ServerAPI;

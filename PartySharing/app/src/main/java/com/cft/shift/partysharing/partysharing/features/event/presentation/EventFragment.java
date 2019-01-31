@@ -1,4 +1,4 @@
-package com.cft.shift.partysharing.partysharing;
+package com.cft.shift.partysharing.partysharing.features.event.presentation;
 
 import android.content.Context;
 import android.net.Uri;
@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.cft.shift.partysharing.partysharing.R;
 
 
 public class EventFragment extends Fragment {
