@@ -16,7 +16,7 @@ public class GetProfilesResponse implements Serializable {
         this.count = count;
     }
 
-    public void setProfiles(List<Profile> profiles) {
+    public void setProfiles(List<GetProfileResponse> profiles) {
         this.profiles = profiles;
     }
 
@@ -24,12 +24,12 @@ public class GetProfilesResponse implements Serializable {
         return count;
     }
 
-    public List<Profile> getProfiles() {
+    public List<GetProfileResponse> getProfiles() {
         return profiles;
     }
 
     /**
      * профили
      */
-    private List<Profile> profiles;
+    private List<GetProfileResponse> profiles;
 }
