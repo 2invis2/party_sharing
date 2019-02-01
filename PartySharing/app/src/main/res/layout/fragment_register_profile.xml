@@ -3,11 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment">
+    tools:context=".features.register.presentation.ProfileRegisterFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
     <LinearLayout
+        android:id="@+id/linear_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -33,6 +34,10 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:background="#1111"
+            android:clickable="true"
+            android:focusable="true"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
             android:src="@drawable/baseline_add_a_photo_24" />
 
         <EditText

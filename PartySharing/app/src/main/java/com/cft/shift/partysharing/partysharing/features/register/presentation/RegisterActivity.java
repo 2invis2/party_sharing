@@ -23,12 +23,12 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (IdSaver.getId(this) == 0) {
+        if (IdSaver.getId(this) != 0) {
             Intent myIntent = new Intent(this, FeedActivity.class);
             this.startActivity(myIntent);
         }
         presenter = RegisterPresenterFactory.createPresenter(this);
-        getSupportActionBar().hide();
+        presenter.attachView(this);
         setContentView(R.layout.activity_register);
         registerPager = findViewById(R.id.register_pager);
         indicator = findViewById(R.id.spring_dots_indicator);

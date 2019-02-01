@@ -4,11 +4,9 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.annotation.IntDef;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,10 +41,14 @@ public class ProfileRegisterFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_register_profile, container, false);
-        initViews(rootView);
-        initListeners();
         return inflater.inflate(R.layout.fragment_register_profile, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        initViews(view);
+        initListeners();
+        super.onViewCreated(view, savedInstanceState);
     }
 
     private void initViews(View rootView) {
@@ -90,14 +92,15 @@ public class ProfileRegisterFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == PICK_IMAGE) {
             if (data == null) {
-                Toast.makeText(getActivity(), "Image selection error", Toast.LENGTH_SHORT).show();
+                return;
             }
             try {
                 InputStream inputStream = getActivity().getContentResolver().openInputStream(data.getData());
                 Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                imageButton.setImageBitmap(bitmap);
                 ((RegisterActivity)getActivity()).getPresenter().setImage(Converter.bitmapToBase64(bitmap));
             } catch (FileNotFoundException e) {
-                e.printStackTrace();
+                //pass
             }
         }
     }

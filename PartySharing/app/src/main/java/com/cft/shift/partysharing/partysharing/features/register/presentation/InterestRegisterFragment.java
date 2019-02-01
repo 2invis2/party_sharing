@@ -30,7 +30,7 @@ public class InterestRegisterFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_register_interest, container, false);
-        setupInterestView(interestView);
+        setupInterestView(rootView);
         return rootView;
     }
 

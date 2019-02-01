@@ -2,7 +2,8 @@ package com.cft.shift.partysharing.partysharing.features.event.domain.model;
 
 import android.graphics.Bitmap;
 
-import com.cft.shift.partysharing.partysharing.features.profile.domain.model.InterestType;
+
+import com.cft.shift.partysharing.partysharing.types.InterestType;
 
 import java.util.List;
 

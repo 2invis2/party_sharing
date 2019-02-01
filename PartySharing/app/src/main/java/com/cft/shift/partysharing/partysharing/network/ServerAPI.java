@@ -34,16 +34,16 @@ import com.cft.shift.partysharing.partysharing.network.exchange.RegisterResponse
 
 public interface ServerAPI {
     @POST("/register")
-    Call<RegisterResponse> postRegistrationInfo(RegisterRequest registerRequest);
+    Call<RegisterResponse> postRegistrationInfo(@Body RegisterRequest registerRequest);
 
     @GET("/feed")
     Call<FeedResponse> getFeed();
 
     @GET("/profile")
-    Call<GetProfileResponse> getProfile(GetProfileRequest getProfileRequest);
+    Call<GetProfileResponse> getProfile(@Body GetProfileRequest getProfileRequest);
 
     @GET("/profiles")
-    Call<GetProfilesResponse> getProfiles(GetProfilesRequest getProfilesRequest);
+    Call<GetProfilesResponse> getProfiles(@Body GetProfilesRequest getProfilesRequest);
 
     @GET("/event")
     Call<AddEventResponse> getEvent(@Body AddEventRequest addEventRequest);

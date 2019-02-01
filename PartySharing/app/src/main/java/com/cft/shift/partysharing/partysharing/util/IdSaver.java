@@ -17,7 +17,7 @@ public class IdSaver {
 
     public static Long getId(Context context) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
-        return sp.getLong("ExactTime", 0);
+        return sp.getLong(Constants.ID_PREFERENSE, 0);
     }
 
 }
