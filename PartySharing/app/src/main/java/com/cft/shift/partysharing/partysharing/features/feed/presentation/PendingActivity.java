@@ -7,6 +7,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabLayout;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cft.shift.partysharing.partysharing.R;
@@ -27,11 +28,11 @@ public class PendingActivity extends BaseActivity implements FeedView {
         @Override
         public void onTabSelected(TabLayout.Tab tab) {
             switch (tab.getPosition()) {
-                case 1:
+                case 0:
                     Intent intent = new Intent(PendingActivity.this, FeedActivity.class);
                     startActivity(intent);
                     return ;
-                case 2:
+                case 1:
                     return ;
             }
             return;
@@ -40,7 +41,7 @@ public class PendingActivity extends BaseActivity implements FeedView {
         public void onTabUnselected(TabLayout.Tab tab) {        }
         @Override
         public void onTabReselected(TabLayout.Tab tab) {        }
-    };;
+    };
 
     private FeedPresenter presenter;
 
@@ -82,6 +83,9 @@ public class PendingActivity extends BaseActivity implements FeedView {
         TabLayout tabLayout = findViewById(R.id.tabLayout);
         tabLayout.addOnTabSelectedListener(mOnTabSelectedListener);
 
+        TextView text = findViewById(R.id.text_pending);
+        text.setText("Pending");
+
         loadFeed();
 
     }
@@ -104,6 +108,7 @@ public class PendingActivity extends BaseActivity implements FeedView {
     @Override
     public void showEventList(FeedResponse list) {
         FeedListAdapter mFeedListAdapter = new FeedListAdapter(this, list.getPending().getData());
+
         mListFeed = findViewById(R.id.list_pending);
         mListFeed.setAdapter(mFeedListAdapter);
     }
