@@ -1,22 +1,19 @@
 package com.cft.shift.partysharing.partysharing.features.profile.presentation;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.util.Base64;
 
 import com.cft.shift.partysharing.partysharing.features.MvpPresenter;
 import com.cft.shift.partysharing.partysharing.features.profile.domain.ProfileInteractor;
 import com.cft.shift.partysharing.partysharing.features.profile.domain.model.Profile;
 import com.cft.shift.partysharing.partysharing.network.Carry;
-import com.cft.shift.partysharing.partysharing.network.exchange.GetAllEventsResponse;
+import com.cft.shift.partysharing.partysharing.network.exchange.GetEventsListRequest;
+import com.cft.shift.partysharing.partysharing.network.exchange.GetEventsListResponse;
 import com.cft.shift.partysharing.partysharing.network.exchange.GetProfileRequest;
 import com.cft.shift.partysharing.partysharing.network.exchange.GetProfileResponse;
 import com.cft.shift.partysharing.partysharing.util.Converter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import javax.xml.bind.DatatypeConverter;
 
 
 public class ProfilePresenter extends MvpPresenter<ProfileView> {
@@ -26,14 +23,14 @@ public class ProfilePresenter extends MvpPresenter<ProfileView> {
         this.profileInteractor=profileInteractor;
     }
 
-    protected void onViewMyProfile(){
-        getProfile();
+    protected void onViewMyProfile(Long id){
+        getProfile(id);
     }
 
     //Показывает профиль на экране
-    private void getProfile () {
+    private void getProfile (Long id) {
         //Нужно где то брать(тоесть где-то в шаред преференс хранится) инфу о проифиле
-        GetProfileRequest myProfile=null;
+        GetProfileRequest myProfile=new GetProfileRequest(id);
         profileInteractor.loadProfile(new Carry<GetProfileResponse>() {
             @Override
             public void onSuccess(GetProfileResponse result) {
@@ -41,7 +38,7 @@ public class ProfilePresenter extends MvpPresenter<ProfileView> {
                 String[] strings = result.getInterests().split(",");
                 interests = new ArrayList<>(Arrays.asList(strings));
                 Bitmap image = Converter.base64ToBitmap(result.getImage());
-                final Profile profile = new Profile(result.getFirstName(),result.getLastName(),result.getAge(),result.getLocation(),interests,image);
+                final Profile profile = new Profile(result.getFirstName(),result.getLastName(),result.getAge(),result.getLocation(),interests,image,(ArrayList<Long>) result.getAttend(),(ArrayList<Long>) result.getManage());
                 view.showProfile(profile);
             }
             @Override
@@ -49,13 +46,13 @@ public class ProfilePresenter extends MvpPresenter<ProfileView> {
                 view.showError("You Have Problems with profile!");
             }
         },myProfile);
-
     }
-    public void  getEventPreviews( ) {
-        profileInteractor.loadEvents(new Carry<GetAllEventsResponse>() {
+    public void  getAttendEventPreviews(final Profile myProfile) {
+        GetEventsListRequest getEventsListRequest = new GetEventsListRequest(myProfile.getAttend());
+        profileInteractor.loadAttendEvents(new Carry<GetEventsListResponse>() {
             @Override
-            public void onSuccess(GetAllEventsResponse result) {
-                view.showEventsPreviw(result.getCount(),result.getEvents());
+            public void onSuccess(GetEventsListResponse result) {
+                view.showAttendEventsPreviw(result.getCount(),result.getEvents());
             }
 
             @Override
@@ -63,8 +60,22 @@ public class ProfilePresenter extends MvpPresenter<ProfileView> {
                 view.showError("You Have Problems with eventspreviw");
 
             }
-        });
+        },getEventsListRequest);
+    }
 
+    public void  getManageEventPreviews(final Profile myProfile) {
+        GetEventsListRequest getEventsListRequest = new GetEventsListRequest(myProfile.getManage());
+        profileInteractor.loadManageEvents(new Carry<GetEventsListResponse>() {
+
+            @Override
+            public void onSuccess(GetEventsListResponse result) {
+                view.showManageEventsPreview(result.getCount(),result.getEvents());
+            }
+            @Override
+            public void onFailure(Throwable throwable) {
+                view.showError("You Have Problems with eventspreviw");
+            }
+        },getEventsListRequest);
     }
 
 }

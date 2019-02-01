@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.MenuItem;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.cft.shift.partysharing.partysharing.R;
@@ -24,6 +25,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileActivity extends BaseActivity implements ProfileView{
     private ProfilePresenter presenter;
+    private ListView mListEvent;
+    private ProfilesListAdapter mProfilesListAdapter;
 
     private CircleImageView image;
     private TextView profileName;
@@ -71,8 +74,8 @@ public class ProfileActivity extends BaseActivity implements ProfileView{
         profileAge = findViewById(R.id.title_profile_age);
     }
     @Override
-    public void showEventsPreviw(int eventsNum, List<EventPreview> eventPreviews) {
-
+    public void showAttendEventsPreviw(int eventsNum, List<EventPreview> eventPreviews){
+        mProfilesListAdapter = new ProfilesListAdapter(this, eventPreviews);
 
     }
     @Override
@@ -81,6 +84,12 @@ public class ProfileActivity extends BaseActivity implements ProfileView{
         profileName.setText(profile.getFirstName()+profile.getLastName());
         profileAge.setText(profile.getAge());
         profileLocation.setText(profile.getLocation());
+    }
+
+    @Override
+    public void showManageEventsPreview(int eventsNum, List<EventPreview> eventPreviews) {
+        mProfilesListAdapter = new ProfilesListAdapter(this, eventPreviews);
+        //mListEvent = findViewById(R.id.)
     }
 
     @Override

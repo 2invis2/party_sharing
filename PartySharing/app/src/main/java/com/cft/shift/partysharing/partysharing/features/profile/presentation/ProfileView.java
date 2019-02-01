@@ -10,8 +10,8 @@ public interface ProfileView extends MvpView {
     //void showProgress();
 
     //void hideProgress();
-    void showEventsPreviw(int eventsNum, List<EventPreview> eventPreviews);
+    void showAttendEventsPreviw(int eventsNum, List<EventPreview> eventPreviews);
     void showProfile(Profile profile);
-
+    void showManageEventsPreview(int eventsNum, List<EventPreview> eventPreviews);
     void showError(String message);
 }
