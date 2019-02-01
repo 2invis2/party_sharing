@@ -72,7 +72,7 @@ public class ProfileActivity extends BaseActivity implements ProfileView{
     }
     @Override
     public void showEventsPreviw(int eventsNum, List<EventPreview> eventPreviews) {
-        
+
 
     }
     @Override
