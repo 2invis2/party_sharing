@@ -4,11 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< Updated upstream
     tools:context=".features.register.presentation.RegisterActivity"
-=======
-    tools:context="com.cft.shift.partysharing.partysharing.features.register.presentation.RegisterActivity"
->>>>>>> Stashed changes
     android:orientation="vertical"
     android:gravity="center"
     android:padding="10dp">

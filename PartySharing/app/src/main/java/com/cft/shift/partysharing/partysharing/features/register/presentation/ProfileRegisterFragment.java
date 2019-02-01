@@ -10,11 +10,8 @@ import android.view.ViewGroup;
 
 import com.cft.shift.partysharing.partysharing.R;
 
-<<<<<<< Updated upstream:PartySharing/app/src/main/java/com/cft/shift/partysharing/partysharing/features/register/presentation/ProfileRegisterFragment.java
 public class ProfileRegisterFragment extends Fragment {
-=======
-public class ProfileFragment extends Fragment {
->>>>>>> Stashed changes:PartySharing/app/src/main/java/com/cft/shift/partysharing/partysharing/features/register/presentation/ProfileFragment.java
+
 
     @Nullable
     @Override
