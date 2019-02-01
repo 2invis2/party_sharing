@@ -5,6 +5,10 @@ import com.cft.shift.partysharing.partysharing.features.feed.domain.FeedInteract
 import com.cft.shift.partysharing.partysharing.network.Carry;
 import com.cft.shift.partysharing.partysharing.network.exchange.FeedResponse;
 
+/**
+ * пресентер просто загружает данные, тут даже делать ничего не пришлось пока
+ */
+
 
 public class FeedPresenter extends MvpPresenter<FeedView> {
 

@@ -17,6 +17,10 @@ import java.util.List;
 
 import static com.cft.shift.partysharing.partysharing.util.Converter.base64ToBitmap;
 
+/**
+ * как не странно, адаптер для списка
+ */
+
 public class FeedListAdapter extends BaseAdapter {
 
     Context ctx;
