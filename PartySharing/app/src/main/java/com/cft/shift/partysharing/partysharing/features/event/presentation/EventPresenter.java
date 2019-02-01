@@ -2,6 +2,7 @@ package com.cft.shift.partysharing.partysharing.features.event.presentation;
 
 import com.cft.shift.partysharing.partysharing.features.MvpPresenter;
 import com.cft.shift.partysharing.partysharing.features.event.domain.EventInteractor;
+import com.cft.shift.partysharing.partysharing.features.event.domain.model.Event;
 import com.cft.shift.partysharing.partysharing.network.Carry;
 import com.cft.shift.partysharing.partysharing.network.exchange.GetEventRequest;
 import com.cft.shift.partysharing.partysharing.network.exchange.GetEventResponse;
@@ -25,7 +26,10 @@ public class EventPresenter extends MvpPresenter<EventView> {
             @Override
             public void onSuccess(GetEventResponse result) {
 
-                //view.showEvent();
+
+                Event event = new Event(result.getName(),result.getLocation(),result.getAddress()
+                        ,result.getDate(),result.getCategory(),result.getCreatorId(),result.getAttend(),);
+                view.showEvent(event);
             }
 
             @Override
