@@ -20,7 +20,6 @@ import com.cft.shift.partysharing.partysharing.types.InterestType;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class InterestRegisterFragment extends Fragment {
 
     private ListView interestView;

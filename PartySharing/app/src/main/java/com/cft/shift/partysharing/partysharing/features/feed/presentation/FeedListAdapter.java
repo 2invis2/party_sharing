@@ -1,6 +1,8 @@
 package com.cft.shift.partysharing.partysharing.features.feed.presentation;
 
 import android.content.Context;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,9 +25,6 @@ public class FeedListAdapter extends BaseAdapter {
         objects = products;
         lInflater = (LayoutInflater) ctx
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    }
-
-    public FeedListAdapter(FeedActivity context, List<EventPreview> data) {
     }
 
     @Override

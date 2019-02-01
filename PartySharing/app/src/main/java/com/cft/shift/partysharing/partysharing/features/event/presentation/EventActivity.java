@@ -4,20 +4,20 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.cft.shift.partysharing.partysharing.App;
 import com.cft.shift.partysharing.partysharing.R;
-import com.cft.shift.partysharing.partysharing.network.Carry;
-import com.cft.shift.partysharing.partysharing.network.DefaultCallback;
-import com.cft.shift.partysharing.partysharing.network.ServerAPI;
-import com.cft.shift.partysharing.partysharing.network.exchange.FeedResponse;
+import com.cft.shift.partysharing.partysharing.features.BaseActivity;
+import com.cft.shift.partysharing.partysharing.features.MvpPresenter;
+import com.cft.shift.partysharing.partysharing.features.MvpView;
+import com.cft.shift.partysharing.partysharing.features.event.domain.model.Event;
+import com.cft.shift.partysharing.partysharing.network.exchange.GetProfileResponse;
 
-public class EventActivity extends AppCompatActivity {
+import java.util.List;
+
+public class EventActivity extends BaseActivity implements EventView {
     private TextView event_name;
     private TextView event_description;
     private TextView event_date;
@@ -25,6 +25,7 @@ public class EventActivity extends AppCompatActivity {
     private TextView event_creator_name;
     private TextView event_members_num;
     private Button event_members;
+    private EventPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,30 +48,38 @@ public class EventActivity extends AppCompatActivity {
         Fragment fragment = null;
         @Override
         public void onClick(View v) {
-
-            final ServerAPI api = App.getRetrofitProvider(EventActivity.this)
-                    .getRetrofit()
-                    .create(ServerAPI.class);
-
-            api.getFeed().enqueue(new DefaultCallback<FeedResponse>(new Carry<FeedResponse>(){
-                @Override
-                public void onSuccess(FeedResponse result) {
-                    fragment = new MembersFragment();
-
-                    FragmentManager fm = getSupportFragmentManager();
-                    FragmentTransaction ft = fm.beginTransaction();
-                    ft.replace(R.id.event_frame ,fragment);
-                    ft.commit();
-                }
-                @Override
-                public void onFailure(Throwable throwable) {
-                   Toast.makeText(EventActivity.this,"FAIL!",Toast.LENGTH_LONG).show();
-                }
-            }));
-
-
+            fragment = new MembersFragment();
+            FragmentManager fm = getSupportFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.event_frame ,fragment);
+            ft.commit();
         }
 
     };
 
+    @Override
+    protected MvpPresenter<EventView> getPresenter() {
+        presenter = PresenterEventFactory.createEventPresenter(this);
+        return presenter;
+    }
+
+    @Override
+    protected MvpView getMvpView() {
+        return this;
+    }
+
+    @Override
+    public void showEvent(Event event) {
+
+    }
+
+    @Override
+    public void showParticipants(int numPartic, List<GetProfileResponse> profiles) {
+
+    }
+
+    @Override
+    public void showError(String message) {
+
+    }
 }

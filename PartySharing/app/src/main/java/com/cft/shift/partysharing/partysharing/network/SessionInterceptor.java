@@ -12,6 +12,7 @@ public class SessionInterceptor implements Interceptor {
     @Override
     public Response intercept(Interceptor.Chain chain) throws IOException {
         Request request = chain.request();
+
         Request newRequest;
 
         newRequest = request.newBuilder()
