@@ -1,4 +1,4 @@
-package com.example.alex.partymaker;
+package com.cft.shift.partysharing.partysharing.features.register.presentation;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,8 +10,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.cft.shift.partysharing.partysharing.R;
 
-public class InterestFragment extends Fragment {
+
+public class InterestRegisterFragment extends Fragment {
 
     private ListView interestView;
 
@@ -23,7 +25,7 @@ public class InterestFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_interest, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_register_interest, container, false);
         interestView = rootView.findViewById(R.id.interest_list);
         interestView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         interestView.setAdapter(new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_multiple_choice, INTERESTS));

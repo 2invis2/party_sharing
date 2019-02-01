@@ -1,4 +1,4 @@
-package com.example.alex.partymaker;
+package com.cft.shift.partysharing.partysharing.features.register.presentation;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.cft.shift.partysharing.partysharing.R;
 import com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -45,10 +46,10 @@ public class RegisterActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int i) {
             if (i == 0) {
-                return new InterestFragment();
+                return new InterestRegisterFragment();
             }
             if (i == 1) {
-                return new ProfileFragment();
+                return new ProfileRegisterFragment();
             }
             return null;
         }
