@@ -1,6 +1,8 @@
 package com.cft.shift.partysharing.partysharing.features.profile.data;
 
 import com.cft.shift.partysharing.partysharing.network.exchange.GetAllEventsResponse;
+import com.cft.shift.partysharing.partysharing.network.exchange.GetEventsListRequest;
+import com.cft.shift.partysharing.partysharing.network.exchange.GetEventsListResponse;
 import com.cft.shift.partysharing.partysharing.network.exchange.GetProfileRequest;
 import com.cft.shift.partysharing.partysharing.network.exchange.GetProfileResponse;
 
@@ -13,6 +15,9 @@ public interface ProfileApi {
     Call<GetProfileResponse> getProfile(@Body GetProfileRequest getProfileRequest);
 
     @GET("/events")
-    Call<GetAllEventsResponse> getEventList();
+    Call<GetAllEventsResponse> getAllEventList();
+
+    @GET("/events")
+    Call<GetEventsListResponse> getEventList(@Body GetEventsListRequest getEventsListRequest);
 
 }

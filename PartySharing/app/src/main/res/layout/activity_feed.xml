@@ -14,7 +14,8 @@
         android:layout_height="wrap_content"
         app:tabBackground="@color/colorPrimary"
         app:tabIndicatorColor="@color/colorPrimaryDark"
-        app:tabTextColor="@color/colorPrimaryDark">
+        app:tabTextColor="@color/colorPrimaryDark"
+        tools:ignore="MissingConstraints">
 
 
         <android.support.design.widget.TabItem

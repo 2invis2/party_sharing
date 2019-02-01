@@ -9,6 +9,9 @@ public class GetProfileRequest implements Serializable {
      */
     private Long id;
 
+    public GetProfileRequest(Long id){
+        this.id = id;
+    }
     public Long getId() {
         return id;
     }

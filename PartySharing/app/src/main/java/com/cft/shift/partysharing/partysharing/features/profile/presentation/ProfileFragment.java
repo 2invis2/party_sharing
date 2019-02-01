@@ -27,7 +27,6 @@ public class ProfileFragment extends Fragment{
         profileEventsAttend = view.findViewById(R.id.profile_events_attend_button);
         profileEventsManage = view.findViewById(R.id.profile_events_manage_button);
 
-
         interests.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

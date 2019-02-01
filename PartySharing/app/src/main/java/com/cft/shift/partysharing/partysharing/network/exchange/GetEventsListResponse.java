@@ -3,11 +3,11 @@ package com.cft.shift.partysharing.partysharing.network.exchange;
 import java.io.Serializable;
 import java.util.List;
 
-public class GetAllEventsResponse implements Serializable {
-    /**
-     * число записей
-     */
+public class GetEventsListResponse implements Serializable {
+
+
     int count;
+
     List<EventPreview> events;
 
     public int getCount() {
