@@ -1,12 +1,16 @@
 package com.cft.shift.partysharing.partysharing.features.event.presentation;
 
+import android.graphics.Bitmap;
+
 import com.cft.shift.partysharing.partysharing.features.MvpPresenter;
 import com.cft.shift.partysharing.partysharing.features.event.domain.EventInteractor;
+import com.cft.shift.partysharing.partysharing.features.event.domain.model.Event;
 import com.cft.shift.partysharing.partysharing.network.Carry;
 import com.cft.shift.partysharing.partysharing.network.exchange.GetEventRequest;
 import com.cft.shift.partysharing.partysharing.network.exchange.GetEventResponse;
 import com.cft.shift.partysharing.partysharing.network.exchange.GetProfilesRequest;
 import com.cft.shift.partysharing.partysharing.network.exchange.GetProfilesResponse;
+import com.cft.shift.partysharing.partysharing.util.Converter;
 
 public class EventPresenter extends MvpPresenter<EventView> {
     private final EventInteractor eventInteractor;
@@ -24,8 +28,10 @@ public class EventPresenter extends MvpPresenter<EventView> {
         eventInteractor.loadEvent(new Carry<GetEventResponse>() {
             @Override
             public void onSuccess(GetEventResponse result) {
-
-                //view.showEvent();
+                Bitmap image = Converter.base64ToBitmap(result.getImage());
+                Event event = new Event(result.getName(),result.getLocation(),result.getAddress()
+                        ,result.getDate(),result.getCategory(),result.getCreatorId(),result.getAttend(),image);
+                view.showEvent(event);
             }
 
             @Override

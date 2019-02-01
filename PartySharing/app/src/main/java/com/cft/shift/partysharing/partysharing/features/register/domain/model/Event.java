@@ -1,4 +1,4 @@
-package com.cft.shift.partysharing.partysharing.features.event.domain.model;
+package com.cft.shift.partysharing.partysharing.features.register.domain.model;
 
 import android.graphics.Bitmap;
 

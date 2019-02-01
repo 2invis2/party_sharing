@@ -2,6 +2,7 @@ package com.cft.shift.partysharing.partysharing.features.profile.presentation;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Base64;
 
 import com.cft.shift.partysharing.partysharing.features.MvpPresenter;
 import com.cft.shift.partysharing.partysharing.features.profile.domain.ProfileInteractor;
@@ -10,6 +11,7 @@ import com.cft.shift.partysharing.partysharing.network.Carry;
 import com.cft.shift.partysharing.partysharing.network.exchange.GetAllEventsResponse;
 import com.cft.shift.partysharing.partysharing.network.exchange.GetProfileRequest;
 import com.cft.shift.partysharing.partysharing.network.exchange.GetProfileResponse;
+import com.cft.shift.partysharing.partysharing.util.Converter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,7 +40,7 @@ public class ProfilePresenter extends MvpPresenter<ProfileView> {
                 ArrayList<String> interests = new ArrayList<>();
                 String[] strings = result.getInterests().split(",");
                 interests = new ArrayList<>(Arrays.asList(strings));
-                Bitmap image = convertToImage(result.getImage());
+                Bitmap image = Converter.base64ToBitmap(result.getImage());
                 final Profile profile = new Profile(result.getFirstName(),result.getLastName(),result.getAge(),result.getLocation(),interests,image);
                 view.showProfile(profile);
             }
@@ -63,25 +65,6 @@ public class ProfilePresenter extends MvpPresenter<ProfileView> {
             }
         });
 
-    }
-
-    private static Bitmap convertToImage(String stringbase64){
-        String[] strings = stringbase64.split(",");
-        String extension;
-        switch (strings[0]) {//check image's extension
-            case "data:image/jpeg;base64":
-                extension = "jpeg";
-                break;
-            case "data:image/png;base64":
-                extension = "png";
-                break;
-            default://should write cases for more images types
-                extension = "jpg";
-                break;
-        }
-        byte[] data = DatatypeConverter.parseBase64Binary(strings[1]);
-        Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
-        return bitmap;
     }
 
 }
