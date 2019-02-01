@@ -25,8 +25,7 @@
 
     <string name="tab_feed">Feed</string>
     <string name="tab_pending">Pending</string>
-    <string name="interest_header">your interests</string>
-    <string name="register_tittle">Register</string>
+
     <string name="about_you">about you</string>
     <string name="name">name</string>
     <string name="lastname">lastname</string>

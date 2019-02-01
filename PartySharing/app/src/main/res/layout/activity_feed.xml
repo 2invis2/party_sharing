@@ -18,16 +18,31 @@
 
 
         <android.support.design.widget.TabItem
+            android:id="@+id/tab_feed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tab_feed" />
 
         <android.support.design.widget.TabItem
+            android:id="@+id/tab_pending"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tab_pending" />
 
     </android.support.design.widget.TabLayout>
+
+    <!--<android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />-->
 
     <ListView
         android:id="@+id/list_feed"

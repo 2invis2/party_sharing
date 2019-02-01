@@ -11,6 +11,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.cft.shift.partysharing.partysharing.R;
+<<<<<<< Updated upstream:PartySharing/app/src/main/java/com/cft/shift/partysharing/partysharing/features/register/presentation/InterestRegisterFragment.java
+=======
+
+>>>>>>> Stashed changes:PartySharing/app/src/main/java/com/cft/shift/partysharing/partysharing/features/register/presentation/InterestFragment.java
 
 
 public class InterestRegisterFragment extends Fragment {

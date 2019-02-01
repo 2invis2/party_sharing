@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabItem;
 import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -19,16 +18,31 @@ import com.cft.shift.partysharing.partysharing.features.profile.presentation.Cre
 import com.cft.shift.partysharing.partysharing.features.profile.presentation.ProfileActivity;
 import com.cft.shift.partysharing.partysharing.network.exchange.FeedResponse;
 
-public class FeedActivity extends BaseActivity implements FeedView {
+public class PendingActivity extends BaseActivity implements FeedView {
 
     private ListView mListFeed;
     private FeedListAdapter mFeedListAdapter;
-    private TabItem mTabFeed;
-    private TabItem mTabPending;
-    private TabLayout.OnTabSelectedListener mOnTabSelectedListener;
+    private TabLayout.OnTabSelectedListener mOnTabSelectedListener = new TabLayout.OnTabSelectedListener() {
+
+        @Override
+        public void onTabSelected(TabLayout.Tab tab) {
+            switch (tab.getPosition()) {
+                case 1:
+                    Intent intent = new Intent(PendingActivity.this, FeedActivity.class);
+                    startActivity(intent);
+                    return ;
+                case 2:
+                    return ;
+            }
+            return;
+        }
+        @Override
+        public void onTabUnselected(TabLayout.Tab tab) {        }
+        @Override
+        public void onTabReselected(TabLayout.Tab tab) {        }
+    };;
 
     private FeedPresenter presenter;
-    private ViewPager viewPager;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -41,11 +55,11 @@ public class FeedActivity extends BaseActivity implements FeedView {
                 case R.id.navigation_search:
                     return true;
                 case R.id.navigation_create:
-                    Intent intent2 = new Intent(FeedActivity.this, CreateEventActivity.class);
+                    Intent intent2 = new Intent(PendingActivity.this, CreateEventActivity.class);
                     startActivity(intent2);
                     return true;
                 case R.id.navigation_profile:
-                    Intent intent3 = new Intent(FeedActivity.this, ProfileActivity.class);
+                    Intent intent3 = new Intent(PendingActivity.this, ProfileActivity.class);
                     startActivity(intent3);
                     return true;
             }
@@ -56,7 +70,7 @@ public class FeedActivity extends BaseActivity implements FeedView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_feed);
+        setContentView(R.layout.activity_pending);
 
         initView();
     }
@@ -65,42 +79,11 @@ public class FeedActivity extends BaseActivity implements FeedView {
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-
-        mOnTabSelectedListener = new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                switch (tab.getPosition()) {
-                    case 1:
-                        return ;
-                    case 2:
-                        Intent intent = new Intent(FeedActivity.this, PendingActivity.class);
-                        startActivity(intent);
-                        return ;
-                }
-                return;
-            }
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {}
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {}
-        };
-
-        //viewPager = (ViewPager) findViewById(R.id.viewpager);
-        //setupViewPager(viewPager);
-
         TabLayout tabLayout = findViewById(R.id.tabLayout);
-        //tabLayout.setupWithViewPager(viewPager);
         tabLayout.addOnTabSelectedListener(mOnTabSelectedListener);
 
         loadFeed();
 
-    }
-
-    private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new FeedFragment(), "Feed");
-        adapter.addFragment(new FeedFragment(), "Pending");
-        viewPager.setAdapter(adapter);
     }
 
     private void loadFeed() {
@@ -120,8 +103,8 @@ public class FeedActivity extends BaseActivity implements FeedView {
 
     @Override
     public void showEventList(FeedResponse list) {
-        FeedListAdapter mFeedListAdapter = new FeedListAdapter(this, list.getFeed().getData());
-        mListFeed = findViewById(R.id.list_feed);
+        FeedListAdapter mFeedListAdapter = new FeedListAdapter(this, list.getPending().getData());
+        mListFeed = findViewById(R.id.list_pending);
         mListFeed.setAdapter(mFeedListAdapter);
     }
 
@@ -132,3 +115,4 @@ public class FeedActivity extends BaseActivity implements FeedView {
 
     }
 }
+
