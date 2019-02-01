@@ -1,6 +1,6 @@
 package com.cft.shift.partysharing.partysharing.network.exchange;
 
-import com.cft.shift.partysharing.partysharing.features.profile.domain.model.InterestType;
+import com.cft.shift.partysharing.partysharing.types.InterestType;
 
 import java.io.Serializable;
 

@@ -13,6 +13,6 @@ public class FeedDataSourceImpl implements FeedDataSource {
 
     @Override
     public void loadFeed(Carry<FeedResponse> carry) {
-        serverAPI.getFeed().enqueue(new DefaultCallback(carry));
+        serverAPI.getFeed().enqueue(new DefaultCallback<>(carry));
     }
 }

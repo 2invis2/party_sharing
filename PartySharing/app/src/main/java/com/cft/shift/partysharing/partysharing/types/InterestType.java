@@ -1,4 +1,4 @@
-package com.cft.shift.partysharing.partysharing.features.profile.domain.model;
+package com.cft.shift.partysharing.partysharing.types;
 
 public enum InterestType {
     SEX("Секс"),
@@ -9,5 +9,13 @@ public enum InterestType {
 
     InterestType(String formattedName) {
         this.formattedName = formattedName;
+    }
+
+    public static String [] getNames() {
+        return new String[] {
+                "SEX",
+                "DRUGS",
+                "ROCK_N_ROLL"
+        };
     }
 }

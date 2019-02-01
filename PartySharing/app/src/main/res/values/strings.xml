@@ -32,5 +32,7 @@
     <string name="lastname">lastname</string>
     <string name="age">age</string>
     <string name="city">city</string>
+    <string name="error_placeholder">error</string>
+    <string name="register_button">register</string>
 
 </resources>
