@@ -13,24 +13,30 @@
     <string name="title_description">Description</string>
     <string name="title_date">Date</string>
     <string name="title_CreatorBy">Created by:</string>
-    <string name="event_creator_name">creatorName</string>
+    <string name="event_creator_name">Creators Name</string>
     <string name="event_members">Members</string>
     <string name="_12">12</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="title_profile_location">location</string>
-    <string name="title_profile_age">age</string>
+    <string name="title_profile_location">Location</string>
+    <string name="title_profile_age">Age</string>
 
     <string name="tab_feed">Feed</string>
     <string name="tab_pending">Pending</string>
-    <string name="interest_header">your interests</string>
+    <string name="interest_header">Your Interests</string>
     <string name="register_tittle">Register</string>
-    <string name="about_you">about you</string>
-    <string name="name">name</string>
-    <string name="lastname">lastname</string>
-    <string name="age">age</string>
-    <string name="city">city</string>
+    <string name="about_you">About You</string>
+    <string name="name">Name</string>
+    <string name="lastname">Lastname</string>
+    <string name="age">Age</string>
+    <string name="city">City</string>
+    <string name="create_event_title">Create New Event</string>
+    <string name="about_event">About Event</string>
+    <string name="title">Title</string>
+    <string name="add_description">Add Description</string>
+    <string name="choose_category">Choose Category</string>
+    <string name="choose_date">Choose Date</string>
 
 </resources>
