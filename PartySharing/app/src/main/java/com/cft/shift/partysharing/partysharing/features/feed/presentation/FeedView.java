@@ -1,9 +1,7 @@
 package com.cft.shift.partysharing.partysharing.features.feed.presentation;
 
 import com.cft.shift.partysharing.partysharing.features.MvpView;
-import com.cft.shift.partysharing.partysharing.features.feed.domain.model.Event;
-
-import java.util.List;
+import com.cft.shift.partysharing.partysharing.network.exchange.FeedResponse;
 
 
 public interface FeedView extends MvpView {
@@ -12,7 +10,7 @@ public interface FeedView extends MvpView {
 
     //void hideProgress();
 
-    void showEventList(List<Event> list);
+    void showEventList(FeedResponse list);
 
     void showError(String message);
 }

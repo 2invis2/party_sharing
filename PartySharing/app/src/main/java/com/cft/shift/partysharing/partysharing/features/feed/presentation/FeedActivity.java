@@ -5,22 +5,19 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.widget.ListView;
 
 import com.cft.shift.partysharing.partysharing.R;
-
-
 import com.cft.shift.partysharing.partysharing.features.BaseActivity;
 import com.cft.shift.partysharing.partysharing.features.MvpPresenter;
 import com.cft.shift.partysharing.partysharing.features.MvpView;
-import com.cft.shift.partysharing.partysharing.features.feed.domain.model.Event;
-import com.cft.shift.partysharing.partysharing.features.profile.presentation.CreateActivityPresenter;
-import com.cft.shift.partysharing.partysharing.features.profile.presentation.CreateEventActivity;
 import com.cft.shift.partysharing.partysharing.features.profile.presentation.ProfileActivity;
-
-import java.util.List;
+import com.cft.shift.partysharing.partysharing.network.exchange.FeedResponse;
 
 public class FeedActivity extends BaseActivity implements FeedView {
+
+    private ListView mListFeed;
+    private FeedListAdapter mFeedListAdapter;
 
     private FeedPresenter presenter;
 
@@ -35,8 +32,6 @@ public class FeedActivity extends BaseActivity implements FeedView {
                 case R.id.navigation_search:
                     return true;
                 case R.id.navigation_create:
-                    Intent intent2 = new Intent(FeedActivity.this, CreateEventActivity.class);
-                    startActivity(intent2);
                     return true;
                 case R.id.navigation_profile:
                     Intent intent = new Intent(FeedActivity.this, ProfileActivity.class);
@@ -57,11 +52,20 @@ public class FeedActivity extends BaseActivity implements FeedView {
     private void initView(){
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        loadFeed();
+
+    }
+
+    private void loadFeed() {
+
+        presenter.loadFeed();
+
     }
 
     @Override
     protected MvpPresenter<FeedView> getPresenter() {
-        presenter = new FeedPresenter();
+        presenter = PresenterFactory.createPresenter(this);
         return presenter;
     }
 
@@ -71,8 +75,12 @@ public class FeedActivity extends BaseActivity implements FeedView {
     }
 
     @Override
-    public void showEventList(List<Event> list) {
+    public void showEventList(FeedResponse list) {
 
+        mFeedListAdapter = new FeedListAdapter(this, list.getFeed().getData());
+
+        mListFeed = findViewById(R.id.list_feed);
+        mListFeed.setAdapter(mFeedListAdapter);
     }
 
     @Override
