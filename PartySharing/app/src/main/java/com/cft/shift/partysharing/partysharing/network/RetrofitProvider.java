@@ -32,7 +32,6 @@ public final class RetrofitProvider {
         logInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         builder.addInterceptor(logInterceptor);
-        builder.addInterceptor(new SessionInterceptor());
 
         return builder.build();
 

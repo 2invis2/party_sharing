@@ -13,7 +13,7 @@ public class FeedInteractorImpl implements FeedInteractor{
     }
 
     @Override
-    public void loadFeed(Carry<FeedResponse> carry) {
-        dataSource.loadFeed(carry);
+    public void loadFeed(Long id, Carry<FeedResponse> carry) {
+        dataSource.loadFeed(id, carry);
     }
 }

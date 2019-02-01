@@ -15,6 +15,7 @@ import com.cft.shift.partysharing.partysharing.R;
 import com.cft.shift.partysharing.partysharing.features.BaseActivity;
 import com.cft.shift.partysharing.partysharing.features.MvpPresenter;
 import com.cft.shift.partysharing.partysharing.features.MvpView;
+import com.cft.shift.partysharing.partysharing.features.create.presentation.CreateEventActivity;
 import com.cft.shift.partysharing.partysharing.features.feed.presentation.FeedActivity;
 import com.cft.shift.partysharing.partysharing.features.profile.domain.model.Profile;
 import com.cft.shift.partysharing.partysharing.network.exchange.EventPreview;

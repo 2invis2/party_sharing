@@ -12,7 +12,7 @@ public class FeedDataSourceImpl implements FeedDataSource {
     public FeedDataSourceImpl(ServerAPI serverAPI) { this.serverAPI = serverAPI;}
 
     @Override
-    public void loadFeed(Carry<FeedResponse> carry) {
-        serverAPI.getFeed().enqueue(new DefaultCallback<>(carry));
+    public void loadFeed(Long id, Carry<FeedResponse> carry) {
+        serverAPI.getFeed(id).enqueue(new DefaultCallback<>(carry));
     }
 }

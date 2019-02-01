@@ -15,9 +15,10 @@ import com.cft.shift.partysharing.partysharing.R;
 import com.cft.shift.partysharing.partysharing.features.BaseActivity;
 import com.cft.shift.partysharing.partysharing.features.MvpPresenter;
 import com.cft.shift.partysharing.partysharing.features.MvpView;
-import com.cft.shift.partysharing.partysharing.features.profile.presentation.CreateEventActivity;
+import com.cft.shift.partysharing.partysharing.features.create.presentation.CreateEventActivity;
 import com.cft.shift.partysharing.partysharing.features.profile.presentation.ProfileActivity;
 import com.cft.shift.partysharing.partysharing.network.exchange.FeedResponse;
+import com.cft.shift.partysharing.partysharing.util.IdSaver;
 
 public class FeedActivity extends BaseActivity implements FeedView {
 
@@ -104,7 +105,7 @@ public class FeedActivity extends BaseActivity implements FeedView {
     }
 
     private void loadFeed() {
-        presenter.loadFeed();
+        presenter.loadFeed(IdSaver.getId(this));
     }
 
     @Override

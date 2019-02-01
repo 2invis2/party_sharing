@@ -44,7 +44,7 @@
             android:name=".features.event.presentation.EventActivity"
             android:label="@string/app_name"></activity>
         <activity
-            android:name=".features.profile.presentation.CreateEventActivity"
+            android:name=".features.create.presentation.CreateEventActivity"
             android:label="@string/app_name"></activity>
 
     </application>

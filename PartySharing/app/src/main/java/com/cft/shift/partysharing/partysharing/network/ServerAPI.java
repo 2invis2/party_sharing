@@ -1,19 +1,13 @@
 package com.cft.shift.partysharing.partysharing.network;
 
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.http.Body;
-import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
-import retrofit2.http.Headers;
 import retrofit2.http.POST;
-import retrofit2.http.Path;
-import retrofit2.http.Query;
 
-import com.cft.shift.partysharing.partysharing.features.event.domain.model.Event;
 import com.cft.shift.partysharing.partysharing.network.exchange.AcceptRequest;
 import com.cft.shift.partysharing.partysharing.network.exchange.AddEventRequest;
 import com.cft.shift.partysharing.partysharing.network.exchange.AddEventResponse;
@@ -37,34 +31,36 @@ public interface ServerAPI {
     Call<RegisterResponse> postRegistrationInfo(@Body RegisterRequest registerRequest);
 
     @GET("/feed")
-    Call<FeedResponse> getFeed();
+    Call<FeedResponse> getFeed(@Header("Authorization") Long id);
 
     @GET("/profile")
-    Call<GetProfileResponse> getProfile(@Body GetProfileRequest getProfileRequest);
+    Call<GetProfileResponse> getProfile(@Header("Authorization") Long id, @Body GetProfileRequest getProfileRequest);
 
     @GET("/profiles")
-    Call<GetProfilesResponse> getProfiles(@Body GetProfilesRequest getProfilesRequest);
+    Call<GetProfilesResponse> getProfiles(@Header("Authorization") Long id, @Body GetProfilesRequest getProfilesRequest);
 
     @GET("/event")
-    Call<AddEventResponse> getEvent(@Body AddEventRequest addEventRequest);
+    Call<AddEventResponse> getEvent(@Header("Authorization") Long id, @Body AddEventRequest addEventRequest);
 
     @GET("/event")
-    Call<GetEventResponse> getEvent(@Body GetEventRequest getEventRequest);
+    Call<GetEventResponse> getEvent(@Header("Authorization") Long id, @Body GetEventRequest getEventRequest);
 
-    @GET("/events")
-    Call<GetAllEventsResponse> getEventList();
+//    @GET("/events")
+//    Call<GetAllEventsResponse> getEventList(@Header("Authorization") Long id, );
 
     @POST("/request")
-    Call<Response> postEventRequest(@Body PartRequest partRequest);
+    Call<Response> partEventRequest(@Header("Authorization") Long id, @Body PartRequest partRequest);
 
     @POST("/invite")
-    Call<Response> postInviteRequest(@Body InviteRequest inviteRequest);
+    Call<Response> postInviteRequest(@Header("Authorization") Long id, @Body InviteRequest inviteRequest);
 
     @POST("/accept")
-    Call<Response> postAcceptRequest(@Body AcceptRequest acceptRequest);
+    Call<Response> postAcceptRequest(@Header("Authorization") Long id, @Body AcceptRequest acceptRequest);
 
     @POST("/confirm")
-    Call<Response> postConfirmRequest(@Body ConfirmRequest confirmRequest);
+    Call<Response> postConfirmRequest(@Header("Authorization") Long id, @Body ConfirmRequest confirmRequest);
 
+    @POST("/event")
+    Call<AddEventResponse> addEventRequest(@Header("Authorization") Long id, @Body AddEventRequest addEventRequest);
 
 }

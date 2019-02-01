@@ -7,5 +7,5 @@ import com.cft.shift.partysharing.partysharing.network.exchange.FeedResponse;
 
 public interface FeedInteractor {
 
-    void loadFeed(Carry<FeedResponse> carry);
+    void loadFeed(Long id, Carry<FeedResponse> carry);
 }

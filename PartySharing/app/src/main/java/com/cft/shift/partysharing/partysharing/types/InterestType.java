@@ -1,9 +1,19 @@
 package com.cft.shift.partysharing.partysharing.types;
 
+
 public enum InterestType {
-    SEX("Секс"),
-    DRUGS("Наркотики"),
-    ROCK_N_ROLL("Rock'n'roll");
+
+    AUTO("Автомобили"),
+    BISNESS("Бизнес"),
+    PARTIES("Вечеринки"),
+    ART("Искусство"),
+    HISTORY("История"),
+    IT("IT и технологии"),
+    FILMS("Кино"),
+    MUSIC("Музыка"),
+    SPORT("Спорт"),
+    PHOTO("Фото"),
+    HUMOR("Юмор");
 
     private String formattedName;
 
@@ -11,11 +21,19 @@ public enum InterestType {
         this.formattedName = formattedName;
     }
 
-    public static String [] getNames() {
+    public static String [] getAllNames() {
         return new String[] {
-                "SEX",
-                "DRUGS",
-                "ROCK_N_ROLL"
+                "Автомобили",
+                "Бизнес",
+                "Вечеринки",
+                "Искусство",
+                "IT и технологии",
+                "Кино",
+                "Музыка",
+                "Спорт",
+                "Фото",
+                "Юмор"
         };
     }
+
 }
