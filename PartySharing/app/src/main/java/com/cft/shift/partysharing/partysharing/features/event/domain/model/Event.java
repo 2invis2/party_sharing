@@ -1,17 +1,22 @@
 package com.cft.shift.partysharing.partysharing.features.event.domain.model;
-import java.util.ArrayList;
+
+import android.graphics.Bitmap;
+
+import com.cft.shift.partysharing.partysharing.features.profile.domain.model.InterestType;
+
+import java.util.List;
 
 public class Event {
     private String name;
     private String location;
     private String adress;
     private String date;
-    private String category;
+    private InterestType category;
     private Long creator;
-    private ArrayList<Long> attend;
-    private String image;
+    private List<Long> attend;
+    private Bitmap image;
 
-    public Event(String name, String location, String adress,String date, String category,Long creator,ArrayList<Long> attend, String image) {
+    public Event(String name, String location, String adress, String date, InterestType category, Long creator, List<Long> attend, Bitmap image) {
         this.name = name;
         this.location = location;
         this.adress = adress;
@@ -37,7 +42,7 @@ public class Event {
         return date;
     }
 
-    public String getCategory() {
+    public InterestType getCategory() {
         return category;
     }
 
@@ -45,11 +50,11 @@ public class Event {
         return creator;
     }
 
-    public ArrayList<Long> getAttend() {
+    public List<Long> getAttend() {
         return attend;
     }
 
-    public String getImage() {
+    public Bitmap getImage() {
         return image;
     }
 }
