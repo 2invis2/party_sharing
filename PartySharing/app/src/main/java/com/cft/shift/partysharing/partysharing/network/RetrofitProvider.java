@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public final class RetrofitProvider {
 
-    private static final String BASE_URL = "https://shrouded-earth-43571.herokuapp.com:80";
+    private static final String BASE_URL = "https://shrouded-earth-43571.herokuapp.com";
 
     private final Retrofit retrofit;
 
