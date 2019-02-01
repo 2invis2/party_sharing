@@ -12,7 +12,6 @@ import android.widget.ListView;
 
 import com.cft.shift.partysharing.partysharing.R;
 
-
 public class InterestRegisterFragment extends Fragment {
 
     private ListView interestView;

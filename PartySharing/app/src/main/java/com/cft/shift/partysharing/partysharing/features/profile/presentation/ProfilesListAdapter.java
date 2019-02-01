@@ -1,8 +1,6 @@
-package com.cft.shift.partysharing.partysharing.features.feed.presentation;
+package com.cft.shift.partysharing.partysharing.features.profile.presentation;
 
 import android.content.Context;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,21 +8,24 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.cft.shift.partysharing.partysharing.R;
+import com.cft.shift.partysharing.partysharing.features.feed.presentation.FeedActivity;
 import com.cft.shift.partysharing.partysharing.network.exchange.EventPreview;
 
 import java.util.List;
 
-public class FeedListAdapter extends BaseAdapter {
-
+public class ProfilesListAdapter extends BaseAdapter {
     Context ctx;
     LayoutInflater lInflater;
     List<EventPreview> objects;
 
-    FeedListAdapter(Context context, List<EventPreview> products) {
+    ProfilesListAdapter(Context context, List<EventPreview> products) {
         ctx = context;
         objects = products;
         lInflater = (LayoutInflater) ctx
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
+
+    public ProfilesListAdapter(FeedActivity context, List<EventPreview> data) {
     }
 
     @Override
@@ -55,7 +56,6 @@ public class FeedListAdapter extends BaseAdapter {
         //((ImageView) view.findViewById(R.id.ivImage)).setImageResource(p.image);
         return view;
     }
-
     EventPreview getEventPreview(int position) {
         return ((EventPreview) getItem(position));
     }
