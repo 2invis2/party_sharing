@@ -7,12 +7,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cft.shift.partysharing.partysharing.R;
 import com.cft.shift.partysharing.partysharing.network.exchange.EventPreview;
 
 import java.util.List;
+
+import static com.cft.shift.partysharing.partysharing.util.Converter.base64ToBitmap;
 
 public class FeedListAdapter extends BaseAdapter {
 
@@ -52,7 +55,7 @@ public class FeedListAdapter extends BaseAdapter {
         EventPreview event = getEventPreview(position);
 
         ((TextView) view.findViewById(R.id.event_name)).setText(event.getName());
-        //((ImageView) view.findViewById(R.id.ivImage)).setImageResource(p.image);
+        ((ImageView) view.findViewById(R.id.event_image)).setImageBitmap(base64ToBitmap(event.getPreview()));
         return view;
     }
 

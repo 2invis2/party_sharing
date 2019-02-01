@@ -5,13 +5,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.cft.shift.partysharing.partysharing.R;
-import com.cft.shift.partysharing.partysharing.network.exchange.FeedResponse;
+import com.cft.shift.partysharing.partysharing.features.MvpView;
 
-
-public class FeedFragment extends Fragment {
+public class FeedFragment extends Fragment implements MvpView {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
