@@ -10,7 +10,7 @@ import com.cft.shift.partysharing.partysharing.features.event.domain.EventIntera
 import com.cft.shift.partysharing.partysharing.features.event.domain.EventInteractorImpl;
 
 final public class PresenterEventFactory {
-    static EventPresenter createProfilePresenter(Context context) {
+    static EventPresenter createEventPresenter(Context context) {
         final EventsApi eventsApi = App.getRetrofitProvider(context)
                 .getRetrofit()
                 .create(EventsApi.class);
