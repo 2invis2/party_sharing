@@ -72,17 +72,19 @@ public class ProfileActivity extends BaseActivity implements ProfileView{
     }
     @Override
     public void showEventsPreviw(int eventsNum, List<EventPreview> eventPreviews) {
+        
 
     }
-
     @Override
     public void showProfile(Profile profile) {
-
+        image.setImageBitmap(profile.getImage());
+        profileName.setText(profile.getFirstName()+profile.getLastName());
+        profileAge.setText(profile.getAge());
+        profileLocation.setText(profile.getLocation());
     }
 
     @Override
     public void showError(String message) {
-
     }
 
     public void fragmentReplace(Fragment fragment) {
