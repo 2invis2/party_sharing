@@ -9,6 +9,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cft.shift.partysharing.partysharing.R;
@@ -70,9 +71,9 @@ public class FeedActivity extends BaseActivity implements FeedView {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 switch (tab.getPosition()) {
-                    case 1:
+                    case 0:
                         return ;
-                    case 2:
+                    case 1:
                         Intent intent = new Intent(FeedActivity.this, PendingActivity.class);
                         startActivity(intent);
                         return ;
@@ -91,6 +92,9 @@ public class FeedActivity extends BaseActivity implements FeedView {
         TabLayout tabLayout = findViewById(R.id.tabLayout);
         //tabLayout.setupWithViewPager(viewPager);
         tabLayout.addOnTabSelectedListener(mOnTabSelectedListener);
+
+        TextView text = findViewById(R.id.text_feed);
+        text.setText("Feed");
 
         loadFeed();
 
@@ -121,6 +125,7 @@ public class FeedActivity extends BaseActivity implements FeedView {
     @Override
     public void showEventList(FeedResponse list) {
         FeedListAdapter mFeedListAdapter = new FeedListAdapter(this, list.getFeed().getData());
+
         mListFeed = findViewById(R.id.list_feed);
         mListFeed.setAdapter(mFeedListAdapter);
     }

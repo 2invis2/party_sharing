@@ -8,6 +8,16 @@
     tools:context="com.cft.shift.partysharing.partysharing.features.feed.presentation.FeedActivity"
     >
 
+    <TextView
+        android:id="@+id/text_pending"
+        android:layout_width="59dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/list_pending" />
+
     <android.support.design.widget.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
@@ -42,7 +52,9 @@
         app:layout_constraintBottom_toTopOf="@+id/navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout" >
+
+    </ListView>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
