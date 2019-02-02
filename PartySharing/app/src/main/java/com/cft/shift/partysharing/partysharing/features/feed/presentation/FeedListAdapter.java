@@ -27,7 +27,7 @@ public class FeedListAdapter extends BaseAdapter {
     LayoutInflater lInflater;
     List<EventPreview> objects;
 
-    FeedListAdapter(Context context, List<EventPreview> products) {
+    public FeedListAdapter(Context context, List<EventPreview> products) {
         ctx = context;
         objects = products;
         lInflater = (LayoutInflater) ctx

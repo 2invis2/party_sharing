@@ -15,6 +15,7 @@ import com.cft.shift.partysharing.partysharing.features.BaseActivity;
 import com.cft.shift.partysharing.partysharing.features.MvpPresenter;
 import com.cft.shift.partysharing.partysharing.features.MvpView;
 import com.cft.shift.partysharing.partysharing.features.feed.presentation.FeedActivity;
+import com.cft.shift.partysharing.partysharing.features.search.presentation.SearchActivity;
 import com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator;
 
 public class CreateEventActivity extends BaseActivity implements CreateActivityView {
@@ -36,6 +37,8 @@ public class CreateEventActivity extends BaseActivity implements CreateActivityV
                     startActivity(intent0);
                     return true;
                 case R.id.navigation_search:
+                    Intent intent1 = new Intent(CreateEventActivity.this, SearchActivity.class);
+                    startActivity(intent1);
                     return true;
                 case R.id.navigation_create:
                     return true;

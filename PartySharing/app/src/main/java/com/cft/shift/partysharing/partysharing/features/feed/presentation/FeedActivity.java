@@ -22,6 +22,7 @@ import com.cft.shift.partysharing.partysharing.features.MvpView;
 import com.cft.shift.partysharing.partysharing.features.event.presentation.EventActivity;
 import com.cft.shift.partysharing.partysharing.features.profile.presentation.CreateEventActivity;
 import com.cft.shift.partysharing.partysharing.features.profile.presentation.ProfileActivity;
+import com.cft.shift.partysharing.partysharing.features.search.presentation.SearchActivity;
 import com.cft.shift.partysharing.partysharing.network.exchange.FeedResponse;
 
 /**
@@ -46,6 +47,8 @@ public class FeedActivity extends BaseActivity implements FeedView {
                 case R.id.navigation_feed:
                     return true;
                 case R.id.navigation_search:
+                    Intent intent1 = new Intent(FeedActivity.this, SearchActivity.class);
+                    startActivity(intent1);
                     return true;
                 case R.id.navigation_create:
                     Intent intent2 = new Intent(FeedActivity.this, CreateEventActivity.class);
@@ -105,8 +108,8 @@ public class FeedActivity extends BaseActivity implements FeedView {
         /**
          * TextView для проверки, потом удалю
          */
-        TextView text = findViewById(R.id.text_feed);
-        text.setText("Feed");
+        /*TextView text = findViewById(R.id.text_feed);
+        text.setText("Feed");*/
 
         loadFeed();
 

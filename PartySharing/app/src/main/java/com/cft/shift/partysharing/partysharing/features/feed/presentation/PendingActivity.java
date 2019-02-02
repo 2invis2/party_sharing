@@ -20,6 +20,7 @@ import com.cft.shift.partysharing.partysharing.features.MvpView;
 import com.cft.shift.partysharing.partysharing.features.event.presentation.EventActivity;
 import com.cft.shift.partysharing.partysharing.features.profile.presentation.CreateEventActivity;
 import com.cft.shift.partysharing.partysharing.features.profile.presentation.ProfileActivity;
+import com.cft.shift.partysharing.partysharing.features.search.presentation.SearchActivity;
 import com.cft.shift.partysharing.partysharing.network.exchange.FeedResponse;
 
 /**
@@ -61,6 +62,8 @@ public class PendingActivity extends BaseActivity implements FeedView {
                 case R.id.navigation_feed:
                     return true;
                 case R.id.navigation_search:
+                    Intent intent1 = new Intent(PendingActivity.this, SearchActivity.class);
+                    startActivity(intent1);
                     return true;
                 case R.id.navigation_create:
                     Intent intent2 = new Intent(PendingActivity.this, CreateEventActivity.class);
@@ -93,8 +96,8 @@ public class PendingActivity extends BaseActivity implements FeedView {
         TabLayout.Tab tab = tabLayout.getTabAt(1);
         tab.select();
 
-        TextView text = findViewById(R.id.text_pending);
-        text.setText("Pending");
+        /*TextView text = findViewById(R.id.text_pending);
+        text.setText("Pending");*/
 
         loadFeed();
 
