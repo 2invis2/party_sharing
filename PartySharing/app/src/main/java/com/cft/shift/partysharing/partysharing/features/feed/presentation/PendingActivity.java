@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.TabItem;
 import android.support.design.widget.TabLayout;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,15 +17,20 @@ import com.cft.shift.partysharing.partysharing.R;
 import com.cft.shift.partysharing.partysharing.features.BaseActivity;
 import com.cft.shift.partysharing.partysharing.features.MvpPresenter;
 import com.cft.shift.partysharing.partysharing.features.MvpView;
-import com.cft.shift.partysharing.partysharing.features.create.presentation.CreateEventActivity;
+import com.cft.shift.partysharing.partysharing.features.event.presentation.EventActivity;
+import com.cft.shift.partysharing.partysharing.features.profile.presentation.CreateEventActivity;
 import com.cft.shift.partysharing.partysharing.features.profile.presentation.ProfileActivity;
+import com.cft.shift.partysharing.partysharing.features.search.presentation.SearchActivity;
 import com.cft.shift.partysharing.partysharing.network.exchange.FeedResponse;
-import com.cft.shift.partysharing.partysharing.util.IdSaver;
+
+/**
+ * лента приглашений
+ */
 
 public class PendingActivity extends BaseActivity implements FeedView {
 
     private ListView mListFeed;
-    private FeedListAdapter mFeedListAdapter;
+    private TabLayout tabLayout;
     private TabLayout.OnTabSelectedListener mOnTabSelectedListener = new TabLayout.OnTabSelectedListener() {
 
         @Override
@@ -31,8 +39,11 @@ public class PendingActivity extends BaseActivity implements FeedView {
                 case 0:
                     Intent intent = new Intent(PendingActivity.this, FeedActivity.class);
                     startActivity(intent);
+                    return ;
                 case 1:
+                    return ;
             }
+            return;
         }
         @Override
         public void onTabUnselected(TabLayout.Tab tab) {        }
@@ -51,6 +62,8 @@ public class PendingActivity extends BaseActivity implements FeedView {
                 case R.id.navigation_feed:
                     return true;
                 case R.id.navigation_search:
+                    Intent intent1 = new Intent(PendingActivity.this, SearchActivity.class);
+                    startActivity(intent1);
                     return true;
                 case R.id.navigation_create:
                     Intent intent2 = new Intent(PendingActivity.this, CreateEventActivity.class);
@@ -77,18 +90,21 @@ public class PendingActivity extends BaseActivity implements FeedView {
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        TabLayout tabLayout = findViewById(R.id.tabLayout);
+        tabLayout = findViewById(R.id.tabLayout);
         tabLayout.addOnTabSelectedListener(mOnTabSelectedListener);
 
-//        TextView text = findViewById(R.id.text_pending);
-//        text.setText("Pending");
+        TabLayout.Tab tab = tabLayout.getTabAt(1);
+        tab.select();
+
+        /*TextView text = findViewById(R.id.text_pending);
+        text.setText("Pending");*/
 
         loadFeed();
 
     }
 
     private void loadFeed() {
-        presenter.loadFeed(IdSaver.getId(this));
+        presenter.loadFeed();
     }
 
     @Override
@@ -108,6 +124,16 @@ public class PendingActivity extends BaseActivity implements FeedView {
 
         mListFeed = findViewById(R.id.list_pending);
         mListFeed.setAdapter(mFeedListAdapter);
+        mListFeed.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Intent intent = new Intent(PendingActivity.this, EventActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        TabLayout.Tab tabPending = tabLayout.getTabAt(1);
+        tabPending.setText(tabPending.getText()+" "+Integer.toString(list.getPending().getCount()));
     }
 
     @Override

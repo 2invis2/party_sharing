@@ -18,6 +18,7 @@ import com.cft.shift.partysharing.partysharing.features.MvpView;
 import com.cft.shift.partysharing.partysharing.features.create.presentation.CreateEventActivity;
 import com.cft.shift.partysharing.partysharing.features.feed.presentation.FeedActivity;
 import com.cft.shift.partysharing.partysharing.features.profile.domain.model.Profile;
+import com.cft.shift.partysharing.partysharing.features.search.presentation.SearchActivity;
 import com.cft.shift.partysharing.partysharing.network.exchange.EventPreview;
 
 import java.util.List;
@@ -44,8 +45,8 @@ public class ProfileActivity extends BaseActivity implements ProfileView{
                     startActivity(intent0);
                     return true;
                 case R.id.navigation_search:
-                    //Intent intent1 = new Intent(ProfileActivity.this, SearchActivity.class);
-                    //startActivity(intent1);
+                    Intent intent1 = new Intent(ProfileActivity.this, SearchActivity.class);
+                    startActivity(intent1);
                     return true;
                 case R.id.navigation_create:
                     Intent intent2 = new Intent(ProfileActivity.this, CreateEventActivity.class);

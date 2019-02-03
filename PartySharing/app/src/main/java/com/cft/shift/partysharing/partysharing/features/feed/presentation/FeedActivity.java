@@ -8,6 +8,9 @@ import android.support.design.widget.TabItem;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewDebug;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,17 +19,20 @@ import com.cft.shift.partysharing.partysharing.R;
 import com.cft.shift.partysharing.partysharing.features.BaseActivity;
 import com.cft.shift.partysharing.partysharing.features.MvpPresenter;
 import com.cft.shift.partysharing.partysharing.features.MvpView;
-import com.cft.shift.partysharing.partysharing.features.create.presentation.CreateEventActivity;
+import com.cft.shift.partysharing.partysharing.features.event.presentation.EventActivity;
+import com.cft.shift.partysharing.partysharing.features.profile.presentation.CreateEventActivity;
 import com.cft.shift.partysharing.partysharing.features.profile.presentation.ProfileActivity;
+import com.cft.shift.partysharing.partysharing.features.search.presentation.SearchActivity;
 import com.cft.shift.partysharing.partysharing.network.exchange.FeedResponse;
-import com.cft.shift.partysharing.partysharing.util.IdSaver;
+
+/**
+ * Лента событий по интересам
+ */
 
 public class FeedActivity extends BaseActivity implements FeedView {
 
     private ListView mListFeed;
-    private FeedListAdapter mFeedListAdapter;
-    private TabItem mTabFeed;
-    private TabItem mTabPending;
+    private TabLayout tabLayout;
     private TabLayout.OnTabSelectedListener mOnTabSelectedListener;
 
     private FeedPresenter presenter;
@@ -41,6 +47,8 @@ public class FeedActivity extends BaseActivity implements FeedView {
                 case R.id.navigation_feed:
                     return true;
                 case R.id.navigation_search:
+                    Intent intent1 = new Intent(FeedActivity.this, SearchActivity.class);
+                    startActivity(intent1);
                     return true;
                 case R.id.navigation_create:
                     Intent intent2 = new Intent(FeedActivity.this, CreateEventActivity.class);
@@ -67,7 +75,9 @@ public class FeedActivity extends BaseActivity implements FeedView {
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-
+        /**
+         * TabLayout прикрутил через активности, что не правильно
+         */
         mOnTabSelectedListener = new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -77,7 +87,9 @@ public class FeedActivity extends BaseActivity implements FeedView {
                     case 1:
                         Intent intent = new Intent(FeedActivity.this, PendingActivity.class);
                         startActivity(intent);
+                        return ;
                 }
+                return;
             }
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {}
@@ -88,18 +100,25 @@ public class FeedActivity extends BaseActivity implements FeedView {
         //viewPager = (ViewPager) findViewById(R.id.viewpager);
         //setupViewPager(viewPager);
 
-        TabLayout tabLayout = findViewById(R.id.tabLayout);
+        tabLayout = findViewById(R.id.tabLayout);
         //tabLayout.setupWithViewPager(viewPager);
+
         tabLayout.addOnTabSelectedListener(mOnTabSelectedListener);
 
-        TextView text = findViewById(R.id.text_feed);
-//        text.setText("Feed");
+        /**
+         * TextView для проверки, потом удалю
+         */
+        /*TextView text = findViewById(R.id.text_feed);
+        text.setText("Feed");*/
 
         loadFeed();
 
     }
 
     private void setupViewPager(ViewPager viewPager) {
+        /**
+         * Не думаю что это понадобится, так как сейчас TebLayout работает через активности, портом удалю
+         */
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new FeedFragment(), "Feed");
         adapter.addFragment(new FeedFragment(), "Pending");
@@ -107,7 +126,7 @@ public class FeedActivity extends BaseActivity implements FeedView {
     }
 
     private void loadFeed() {
-        presenter.loadFeed(IdSaver.getId(this));
+        presenter.loadFeed();
     }
 
     @Override
@@ -127,6 +146,16 @@ public class FeedActivity extends BaseActivity implements FeedView {
 
         mListFeed = findViewById(R.id.list_feed);
         mListFeed.setAdapter(mFeedListAdapter);
+        mListFeed.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Intent intent = new Intent(FeedActivity.this, EventActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        TabLayout.Tab tabPending = tabLayout.getTabAt(1);
+        tabPending.setText(tabPending.getText()+" "+Integer.toString(list.getPending().getCount()));
     }
 
     @Override
