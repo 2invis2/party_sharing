@@ -1,24 +1,32 @@
 package com.cft.shift.partysharing.partysharing.features.register.presentation;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.SparseArray;
+import android.view.ViewGroup;
 
 import com.cft.shift.partysharing.partysharing.R;
+import com.cft.shift.partysharing.partysharing.features.BaseActivity;
 import com.cft.shift.partysharing.partysharing.features.feed.presentation.FeedActivity;
 import com.cft.shift.partysharing.partysharing.util.IdSaver;
 import com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator;
 
-public class RegisterActivity extends AppCompatActivity implements RegisterView {
+public class RegisterActivity extends BaseActivity implements RegisterView {
 
     private RegisterAdapter registerAdapter;
     private ViewPager registerPager;
     private SpringDotsIndicator indicator;
     private RegisterPresenter presenter;
+
+    @Override
+    protected RegisterView getMvpView() {
+        return this;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +35,6 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
             Intent myIntent = new Intent(this, FeedActivity.class);
             this.startActivity(myIntent);
         }
-        presenter = RegisterPresenterFactory.createPresenter(this);
-        presenter.attachView(this);
         setContentView(R.layout.activity_register);
         registerPager = findViewById(R.id.register_pager);
         indicator = findViewById(R.id.spring_dots_indicator);
@@ -48,13 +54,15 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
 
     @Override
     public void showError(String error) {
-        ProfileRegisterFragment fragment = (ProfileRegisterFragment) registerAdapter.getItem(1);
+        ProfileRegisterFragment fragment = (ProfileRegisterFragment) registerAdapter.getRegisteredFragment(1);
         fragment.showError(error);
     }
 
     private class RegisterAdapter extends FragmentStatePagerAdapter {
 
-        public RegisterAdapter(FragmentManager fm) {
+        SparseArray<Fragment> registeredFragments = new SparseArray<Fragment>();
+
+        RegisterAdapter(FragmentManager fm) {
             super(fm);
         }
 
@@ -69,6 +77,18 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
             return null;
         }
 
+        @NonNull
+        @Override
+        public Object instantiateItem(@NonNull ViewGroup container, int position) {
+            Fragment fragment = (Fragment) super.instantiateItem(container, position);
+            registeredFragments.put(position, fragment);
+            return fragment;
+        }
+
+        public Fragment getRegisteredFragment(int position) {
+            return registeredFragments.get(position);
+        }
+
         @Override
         public int getCount() {
             return 2;
@@ -76,7 +96,13 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
 
     }
 
-    public RegisterPresenter getPresenter() {
+    public RegisterPresenter accessPresenter() {
         return presenter;
     }
+
+    public RegisterPresenter getPresenter() {
+        presenter = RegisterPresenterFactory.createPresenter(this);
+        return presenter;
+    }
+
 }

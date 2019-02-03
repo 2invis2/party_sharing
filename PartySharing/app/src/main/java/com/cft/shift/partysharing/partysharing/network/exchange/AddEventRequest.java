@@ -18,6 +18,11 @@ public class AddEventRequest implements Serializable {
     private String description;
     private String date;
     private InterestType category;
+    /**
+     * картинка в base64
+     */
+
+    private String image;
 
     public void setName(String name) {
         this.name = name;
@@ -47,11 +52,7 @@ public class AddEventRequest implements Serializable {
         this.image = image;
     }
 
-    /**
-     * картинка в base64
-     */
 
-    private String image;
 
     public String getName() {
         return name;

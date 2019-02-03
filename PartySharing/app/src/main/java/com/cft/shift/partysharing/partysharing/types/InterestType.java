@@ -2,7 +2,9 @@ package com.cft.shift.partysharing.partysharing.types;
 
 
 public enum InterestType {
-
+    SEX("Секс"),
+    DRUGS("Наркотики"),
+    ROCK_N_ROLL("Rock'n'roll"),
     AUTO("Автомобили"),
     BISNESS("Бизнес"),
     PARTIES("Вечеринки"),
@@ -23,6 +25,9 @@ public enum InterestType {
 
     public static String [] getAllNames() {
         return new String[] {
+                "Секс",
+                "Наркотики",
+                "Rock'n'roll",
                 "Автомобили",
                 "Бизнес",
                 "Вечеринки",

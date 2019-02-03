@@ -21,26 +21,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InterestCreateEventFragment extends Fragment {
-    private ListView interestView;
 
+    private ListView interestView;
     private static  String[] INTERESTS = InterestType.getAllNames();
+    private CreateEventActivity activity;
+    private CreatePresenter presenter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_create_event_interest, container, false);
+        return inflater.inflate(R.layout.fragment_create_event_interest, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         interestView = view.findViewById(R.id.event_interest_list);
         interestView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-        interestView.setAdapter(new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_single_choice, INTERESTS));
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        activity = (CreateEventActivity) getActivity();
+        presenter = activity.accessPresenter();
+        interestView.setAdapter(new ArrayAdapter<>(activity, android.R.layout.simple_list_item_single_choice, INTERESTS));
         interestView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 SparseBooleanArray selection = interestView.getCheckedItemPositions();
                 for (int i = 0; i < selection.size(); i++) {
-                    ((CreateEventActivity)getActivity()).getMyPresenter().setInterest(InterestType.values()[i]);
+                    presenter.setInterest(InterestType.values()[i]);
                 }
             }
         });
-        return view;
     }
 }

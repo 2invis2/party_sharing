@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linear_layout"
+    android:orientation="vertical"
+    android:gravity="center"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".features.register.presentation.ProfileRegisterFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-
-    <LinearLayout
-        android:id="@+id/linear_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center">
 
 
         <TextView
@@ -22,7 +16,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="About you" />
+            android:text="@string/about_you" />
 
 
         <ImageButton
@@ -47,7 +41,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="8dp"
-            android:hint="Name"
+            android:hint="@string/name"
             android:maxLines="1"
             android:inputType="text"/>
 
@@ -58,7 +52,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:hint="Lastname"
+            android:hint="@string/lastname"
             android:maxLines="1"
             android:inputType="text"/>
 
@@ -69,7 +63,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:hint="Age"
+            android:hint="@string/age"
             android:maxLines="1"
             android:inputType="numberDecimal"/>
 
@@ -80,9 +74,10 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:hint="City"
+            android:hint="@string/city"
             android:maxLines="1"
             android:inputType="text"/>
+
         <TextView
             android:id="@+id/register_error"
             android:layout_width="match_parent"
@@ -90,13 +85,13 @@
             android:text="@string/error_placeholder"
             android:textSize="15sp"
             android:gravity="center"
-            android:visibility="invisible"/>
+            android:visibility="invisible"
+            android:textColor="#F00" />
+
         <Button
             android:id="@+id/register_butt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/register_button" />
 
-
-    </LinearLayout>
-</FrameLayout>
+</LinearLayout>

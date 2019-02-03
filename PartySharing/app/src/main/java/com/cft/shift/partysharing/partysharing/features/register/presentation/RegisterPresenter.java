@@ -3,6 +3,7 @@ package com.cft.shift.partysharing.partysharing.features.register.presentation;
 import android.app.Activity;
 import android.content.Intent;
 
+import com.cft.shift.partysharing.partysharing.ImageCache;
 import com.cft.shift.partysharing.partysharing.features.MvpPresenter;
 import com.cft.shift.partysharing.partysharing.features.feed.presentation.FeedActivity;
 import com.cft.shift.partysharing.partysharing.features.register.domain.RegisterInteractor;
@@ -13,15 +14,15 @@ import com.cft.shift.partysharing.partysharing.util.IdSaver;
 
 public class RegisterPresenter extends MvpPresenter<RegisterView> {
 
-    RegisterInteractor interactor;
+    private RegisterInteractor interactor;
 
-    RegisterRequest request = new RegisterRequest();
+    private RegisterRequest request = new RegisterRequest();
 
-    public RegisterPresenter(RegisterInteractor interactor) {
+    RegisterPresenter(RegisterInteractor interactor) {
         this.interactor = interactor;
     }
 
-    public void setSelectedInterests(String selectedInterests) {
+    void setSelectedInterests(String selectedInterests) {
         request.setInterests(selectedInterests);
     }
 
@@ -29,11 +30,11 @@ public class RegisterPresenter extends MvpPresenter<RegisterView> {
         request.setFirstName(name);
     }
 
-    public void setLastname(String lastname) {
+    void setLastname(String lastname) {
         request.setLastName(lastname);
     }
 
-    public void setAge(int age) {
+    void setAge(int age) {
         request.setAge(age);
     }
 
@@ -46,9 +47,12 @@ public class RegisterPresenter extends MvpPresenter<RegisterView> {
     }
 
     void register(final Activity context) {
+        final String image = request.getImage();
+        request.setImage("");
         interactor.register(request, new Carry<RegisterResponse>() {
             @Override
             public void onSuccess(RegisterResponse result) {
+                ImageCache.putProfileImage(result.getId(), image);
                 IdSaver.putId(result.getId(), context);
                 Intent myIntent = new Intent(context, FeedActivity.class);
                 context.startActivity(myIntent);
@@ -56,7 +60,7 @@ public class RegisterPresenter extends MvpPresenter<RegisterView> {
 
             @Override
             public void onFailure(Throwable throwable) {
-                view.showError("Registration error");
+                view.showError("Registration error, check connection");
             }
         });
     }

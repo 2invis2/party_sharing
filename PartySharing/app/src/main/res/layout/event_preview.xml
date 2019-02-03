@@ -9,6 +9,7 @@
     android:layout_marginTop="10dp"
     android:layout_marginEnd="10dp"
     android:orientation="horizontal"
+    android:weightSum="3"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
@@ -18,11 +19,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:src="@tools:sample/avatars"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"/>
 
     <TextView
         android:id="@+id/event_name"
-        android:layout_width="272dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="9" />
+        android:layout_weight="2"
+        android:textSize="30sp"
+        android:text="@string/event_name_placeholder"/>
 </LinearLayout>

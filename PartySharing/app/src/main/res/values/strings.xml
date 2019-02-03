@@ -34,7 +34,14 @@
     <string name="title">Title</string>
     <string name="add_description">Add Description</string>
     <string name="choose_category">Choose Category</string>
+    <string name="address">Address</string>
+    <string name="description">Description</string>
     <string name="choose_date">Choose Date</string>
-    <string name="city">city</string>
+    <string name="event_name_placeholder">Привет</string>
+    <string name="about_you">About you</string>
+    <string name="name">Name</string>
+    <string name="lastname">Lastname</string>
+    <string name="age">Age</string>
+    <string name="city">City</string>
 
 </resources>

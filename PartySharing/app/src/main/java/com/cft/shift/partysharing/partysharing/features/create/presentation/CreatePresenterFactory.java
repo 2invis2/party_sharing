@@ -8,7 +8,7 @@ import com.cft.shift.partysharing.partysharing.features.create.domain.CreateInte
 
 import com.cft.shift.partysharing.partysharing.network.ServerAPI;
 
-public class CreatePresentorFactory {
+class CreatePresenterFactory {
     static CreatePresenter createPresenter(Context context) {
         final ServerAPI api = App.getRetrofitProvider(context)
                 .getRetrofit()

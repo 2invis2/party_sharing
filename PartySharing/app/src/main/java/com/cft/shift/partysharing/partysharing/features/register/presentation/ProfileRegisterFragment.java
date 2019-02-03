@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.cft.shift.partysharing.partysharing.R;
 import com.cft.shift.partysharing.partysharing.util.Converter;
@@ -37,6 +36,8 @@ public class ProfileRegisterFragment extends Fragment {
     private TextView errorView;
 
     private Button registerButton;
+    private RegisterActivity activity;
+    private RegisterPresenter presenter;
 
     @Nullable
     @Override
@@ -49,6 +50,13 @@ public class ProfileRegisterFragment extends Fragment {
         initViews(view);
         initListeners();
         super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        activity = (RegisterActivity)getActivity();
+        presenter = activity.accessPresenter();
     }
 
     private void initViews(View rootView) {
@@ -76,13 +84,11 @@ public class ProfileRegisterFragment extends Fragment {
             public void onClick(View v) {
                 if (!TextChecker.isEmpty(nameField) && !TextChecker.isEmpty(lastnameField) &&
                         !TextChecker.isEmpty(ageField) && !TextChecker.isEmpty(cityField)) {
-
-                    RegisterPresenter presenter = ((RegisterActivity)getActivity()).getPresenter();
                     presenter.setName(nameField.getText().toString());
                     presenter.setLastname(lastnameField.getText().toString());
                     presenter.setAge(Integer.valueOf(ageField.getText().toString()));
                     presenter.setLocation(cityField.getText().toString());
-                    presenter.register(getActivity());
+                    presenter.register(activity);
                 }
             }
         });
@@ -95,10 +101,10 @@ public class ProfileRegisterFragment extends Fragment {
                 return;
             }
             try {
-                InputStream inputStream = getActivity().getContentResolver().openInputStream(data.getData());
+                InputStream inputStream = activity.getContentResolver().openInputStream(data.getData());
                 Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
                 imageButton.setImageBitmap(bitmap);
-                ((RegisterActivity)getActivity()).getPresenter().setImage(Converter.bitmapToBase64(bitmap));
+                presenter.setImage(Converter.bitmapToBase64(bitmap));
             } catch (FileNotFoundException e) {
                 //pass
             }
@@ -109,6 +115,5 @@ public class ProfileRegisterFragment extends Fragment {
         errorView.setText(error);
         errorView.setVisibility(View.VISIBLE);
     }
-
 
 }

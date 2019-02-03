@@ -12,7 +12,6 @@ import android.view.MenuItem;
 
 import com.cft.shift.partysharing.partysharing.R;
 import com.cft.shift.partysharing.partysharing.features.BaseActivity;
-import com.cft.shift.partysharing.partysharing.features.MvpPresenter;
 import com.cft.shift.partysharing.partysharing.features.MvpView;
 import com.cft.shift.partysharing.partysharing.features.feed.presentation.FeedActivity;
 import com.cft.shift.partysharing.partysharing.features.profile.presentation.ProfileActivity;
@@ -21,9 +20,9 @@ import com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator;
 public class CreateEventActivity extends BaseActivity implements CreateActivityView {
 
     private CreateEventAdapter createEventAdapter;
-    private CreatePresenter presenter;
     private ViewPager pager;
     private SpringDotsIndicator indicator;
+    private CreatePresenter presenter;
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -50,15 +49,19 @@ public class CreateEventActivity extends BaseActivity implements CreateActivityV
     };
 
     @Override
-    protected <T extends MvpView> MvpPresenter<T> getPresenter() {
-        presenter = CreatePresentorFactory.createPresenter(this);
-        return (MvpPresenter<T>) presenter;
+    protected CreatePresenter getPresenter() {
+        presenter = CreatePresenterFactory.createPresenter(this);
+        return presenter;
     }
+
+    public CreatePresenter accessPresenter() {
+        return presenter;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // getSupportActionBar().hide();
         setContentView(R.layout.create_event_activity);
         pager = findViewById(R.id.create_event_pager);
         indicator = findViewById(R.id.spring_dots_indicator_event);
@@ -71,10 +74,6 @@ public class CreateEventActivity extends BaseActivity implements CreateActivityV
     private void initView(){
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-    }
-
-    public CreatePresenter getMyPresenter() {
-        return presenter;
     }
 
     @Override

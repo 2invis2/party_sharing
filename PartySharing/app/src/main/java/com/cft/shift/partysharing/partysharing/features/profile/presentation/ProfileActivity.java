@@ -81,7 +81,9 @@ public class ProfileActivity extends BaseActivity implements ProfileView{
     }
     @Override
     public void showProfile(Profile profile) {
-        image.setImageBitmap(profile.getImage());
+        if (profile.getImage() != null) {
+            image.setImageBitmap(profile.getImage());
+        }
         profileName.setText(profile.getFirstName()+profile.getLastName());
         profileAge.setText(profile.getAge());
         profileLocation.setText(profile.getLocation());

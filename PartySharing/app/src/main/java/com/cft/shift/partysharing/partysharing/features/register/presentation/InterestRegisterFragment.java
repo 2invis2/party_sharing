@@ -1,5 +1,6 @@
 package com.cft.shift.partysharing.partysharing.features.register.presentation;
 
+import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -23,21 +24,34 @@ import java.util.List;
 public class InterestRegisterFragment extends Fragment {
 
     private ListView interestView;
+    RegisterActivity activity;
+    RegisterPresenter presenter;
 
     private static String[] INTERESTS = InterestType.getAllNames();
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_register_interest, container, false);
-        setupInterestView(rootView);
-        return rootView;
+        return inflater.inflate(R.layout.fragment_register_interest, container, false);
     }
 
-    private void setupInterestView(View rootView) {
-        interestView = rootView.findViewById(R.id.interest_list);
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        activity = (RegisterActivity) getActivity();
+        presenter = activity.accessPresenter();
+        setupInterestView(activity);
+    }
+
+    private void setupInterestView(Activity activity) {
+        interestView = activity.findViewById(R.id.interest_list);
         interestView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-        interestView.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_multiple_choice, INTERESTS));
+        interestView.setAdapter(new ArrayAdapter<>(this.activity, android.R.layout.simple_list_item_multiple_choice, INTERESTS));
         interestView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
@@ -47,7 +61,7 @@ public class InterestRegisterFragment extends Fragment {
                 for (int i = 0; i < selection.size(); i++) {
                     selected.add(InterestType.values()[i].toString());
                 }
-                ((RegisterActivity)getActivity()).getPresenter().setSelectedInterests(String.join(",", selected));
+                presenter.setSelectedInterests(String.join(",", selected));
             }
         });
     }

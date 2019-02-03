@@ -1,4 +1,4 @@
-package com.cft.shift.partysharing.partysharing.splash;
+package com.cft.shift.partysharing.partysharing.features.splash;
 
 import android.content.Intent;
 import android.os.Handler;

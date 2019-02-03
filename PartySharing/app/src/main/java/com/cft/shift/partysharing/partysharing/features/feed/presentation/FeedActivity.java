@@ -77,9 +77,7 @@ public class FeedActivity extends BaseActivity implements FeedView {
                     case 1:
                         Intent intent = new Intent(FeedActivity.this, PendingActivity.class);
                         startActivity(intent);
-                        return ;
                 }
-                return;
             }
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {}
@@ -95,7 +93,7 @@ public class FeedActivity extends BaseActivity implements FeedView {
         tabLayout.addOnTabSelectedListener(mOnTabSelectedListener);
 
         TextView text = findViewById(R.id.text_feed);
-        text.setText("Feed");
+//        text.setText("Feed");
 
         loadFeed();
 

@@ -31,11 +31,8 @@ public class PendingActivity extends BaseActivity implements FeedView {
                 case 0:
                     Intent intent = new Intent(PendingActivity.this, FeedActivity.class);
                     startActivity(intent);
-                    return ;
                 case 1:
-                    return ;
             }
-            return;
         }
         @Override
         public void onTabUnselected(TabLayout.Tab tab) {        }
@@ -83,8 +80,8 @@ public class PendingActivity extends BaseActivity implements FeedView {
         TabLayout tabLayout = findViewById(R.id.tabLayout);
         tabLayout.addOnTabSelectedListener(mOnTabSelectedListener);
 
-        TextView text = findViewById(R.id.text_pending);
-        text.setText("Pending");
+//        TextView text = findViewById(R.id.text_pending);
+//        text.setText("Pending");
 
         loadFeed();
 
