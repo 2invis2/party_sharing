@@ -13,7 +13,7 @@ public class SearchDataSourceImpl implements SearchDataSource{
     }
 
     @Override
-    public void loadSearch(Carry<GetAllEventsResponse> carry) {
-        serverAPI.getEventList().enqueue(new DefaultCallback<>(carry));
+    public void loadSearch(Long id, Carry<GetAllEventsResponse> carry) {
+        serverAPI.getEventList(id).enqueue(new DefaultCallback<>(carry));
     }
 }

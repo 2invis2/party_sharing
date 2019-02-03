@@ -14,12 +14,13 @@ import com.cft.shift.partysharing.partysharing.R;
 import com.cft.shift.partysharing.partysharing.features.BaseActivity;
 import com.cft.shift.partysharing.partysharing.features.MvpPresenter;
 import com.cft.shift.partysharing.partysharing.features.MvpView;
+import com.cft.shift.partysharing.partysharing.features.create.presentation.CreateEventActivity;
 import com.cft.shift.partysharing.partysharing.features.event.presentation.EventActivity;
 import com.cft.shift.partysharing.partysharing.features.feed.presentation.FeedActivity;
 import com.cft.shift.partysharing.partysharing.features.feed.presentation.FeedListAdapter;
-import com.cft.shift.partysharing.partysharing.features.profile.presentation.CreateEventActivity;
 import com.cft.shift.partysharing.partysharing.features.profile.presentation.ProfileActivity;
 import com.cft.shift.partysharing.partysharing.network.exchange.GetAllEventsResponse;
+import com.cft.shift.partysharing.partysharing.util.IdSaver;
 
 public class SearchActivity extends BaseActivity implements SearchActivityView {
 
@@ -79,11 +80,11 @@ public class SearchActivity extends BaseActivity implements SearchActivityView {
                 return false;
             }
         });
-        loadSearch();
+        loadSearch(IdSaver.getId(this));
     }
 
-    private void loadSearch() {
-        presenter.loadSearch();
+    private void loadSearch(Long id) {
+        presenter.loadSearch(id);
     }
 
     @Override

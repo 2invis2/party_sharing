@@ -18,8 +18,8 @@ public class FeedPresenter extends MvpPresenter<FeedView> {
         this.interactor = interactor;
     }
 
-    void loadFeed(){
-        interactor.loadFeed(new Carry<FeedResponse>() {
+    void loadFeed(Long id){
+        interactor.loadFeed(id, new Carry<FeedResponse>() {
 
             @Override
             public void onSuccess(FeedResponse result) {

@@ -12,8 +12,8 @@ public class SearchPresenter extends MvpPresenter<SearchActivityView> {
         this.interactor = interactor;
     }
 
-    public void loadSearch() {
-        interactor.loadSearch(new Carry<GetAllEventsResponse>() {
+    public void loadSearch(Long id) {
+        interactor.loadSearch(id, new Carry<GetAllEventsResponse>() {
 
             @Override
             public void onSuccess(GetAllEventsResponse result) {

@@ -45,8 +45,8 @@ public interface ServerAPI {
     @GET("/event")
     Call<GetEventResponse> getEvent(@Header("Authorization") Long id, @Body GetEventRequest getEventRequest);
 
-//    @GET("/events")
-//    Call<GetAllEventsResponse> getEventList(@Header("Authorization") Long id, );
+    @GET("/events")
+    Call<GetAllEventsResponse> getEventList(@Header("Authorization") Long id);
 
     @POST("/request")
     Call<Response> partEventRequest(@Header("Authorization") Long id, @Body PartRequest partRequest);

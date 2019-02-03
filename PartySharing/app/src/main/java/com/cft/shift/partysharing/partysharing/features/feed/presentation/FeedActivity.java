@@ -19,11 +19,12 @@ import com.cft.shift.partysharing.partysharing.R;
 import com.cft.shift.partysharing.partysharing.features.BaseActivity;
 import com.cft.shift.partysharing.partysharing.features.MvpPresenter;
 import com.cft.shift.partysharing.partysharing.features.MvpView;
+import com.cft.shift.partysharing.partysharing.features.create.presentation.CreateEventActivity;
 import com.cft.shift.partysharing.partysharing.features.event.presentation.EventActivity;
-import com.cft.shift.partysharing.partysharing.features.profile.presentation.CreateEventActivity;
 import com.cft.shift.partysharing.partysharing.features.profile.presentation.ProfileActivity;
 import com.cft.shift.partysharing.partysharing.features.search.presentation.SearchActivity;
 import com.cft.shift.partysharing.partysharing.network.exchange.FeedResponse;
+import com.cft.shift.partysharing.partysharing.util.IdSaver;
 
 /**
  * Лента событий по интересам
@@ -126,7 +127,7 @@ public class FeedActivity extends BaseActivity implements FeedView {
     }
 
     private void loadFeed() {
-        presenter.loadFeed();
+        presenter.loadFeed(IdSaver.getId(this));
     }
 
     @Override

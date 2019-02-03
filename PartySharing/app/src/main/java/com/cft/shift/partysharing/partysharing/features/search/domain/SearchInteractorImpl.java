@@ -22,8 +22,8 @@ public class SearchInteractorImpl implements SearchInteractor{
     }
 
     @Override
-    public void loadSearch(Carry<GetAllEventsResponse> carry) {
-        dataSource.loadSearch(carry);
+    public void loadSearch(Long id, Carry<GetAllEventsResponse> carry) {
+        dataSource.loadSearch(id, carry);
     }
 
     @Override
